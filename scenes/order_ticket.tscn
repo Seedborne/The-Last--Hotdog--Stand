@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce240gm6arbmj"]
+
+[ext_resource type="Script" path="res://scripts/order_ticket.gd" id="1_gvpyh"]
+
+[node name="OrderTicket" type="Panel"]
+offset_left = 146.0
+offset_top = 58.0
+offset_right = 342.0
+offset_bottom = 350.0
+script = ExtResource("1_gvpyh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 196.0
+offset_bottom = 292.0
+
+[node name="SausageType" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="BunType" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="Toppings" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Side" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="HideTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="HideTimer" to="." method="_on_hide_timer_timeout"]
