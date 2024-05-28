@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8n3hjgfd087d"
-path="res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"
+uid="uid://irycmlysh28n"
+path="res://.godot/imported/hotdogcarttest.png-60ba1ab09daef7cbae9b9af824323ad2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/customers/blueguy.png"
-dest_files=["res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"]
+source_file="res://assets/hotdogcarttest.png"
+dest_files=["res://.godot/imported/hotdogcarttest.png-60ba1ab09daef7cbae9b9af824323ad2.ctex"]
 
 [params]
 

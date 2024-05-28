@@ -20,4 +20,4 @@ func _on_next_pressed():
 		_go_to_first_location()
 
 func _go_to_first_location():
-	get_tree().change_scene_to_file("res://scenes/community_park.tscn")
+	get_tree().change_scene_to_file("res://scenes/hotdog_cart.tscn")

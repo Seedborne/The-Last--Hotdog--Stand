@@ -4,7 +4,6 @@ signal order_requested()
 signal customer_left(customer)
 
 var order_ticket = preload("res://scenes/order_ticket.tscn")
-var park_patience = 18.0
 
 var customer_textures = [
 	preload("res://assets/customers/blueguy.png"),
@@ -13,7 +12,7 @@ var customer_textures = [
 ]
 
 func _ready():
-	$CustomerPatience.wait_time = park_patience
+	$CustomerPatience.wait_time = Globals.park_patience
 	print("Customer waiting for ", $CustomerPatience.wait_time, " seconds")
 	$CustomerPatience.start()
 	$CustomerSprite.set_process_input(true)
@@ -34,5 +33,3 @@ func _on_customer_patience_timeout():
 	emit_signal("customer_left", self)
 	print("Customer left")
 	queue_free()
-
-

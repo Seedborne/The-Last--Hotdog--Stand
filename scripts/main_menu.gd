@@ -1,11 +1,5 @@
 extends Control
 
-func _ready():
-	pass # Replace with function body.
-
-func _process(_delta):
-	pass
-
 func _on_new_game_pressed():
 	print("New Game selected")
 	get_tree().change_scene_to_file("res://scenes/opening_scene.tscn")

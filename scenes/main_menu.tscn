@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ykwbo3tp6to"]
+[gd_scene load_steps=6 format=3 uid="uid://4ykwbo3tp6to"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_agw42"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayoax"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkdew"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cn4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu3k3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,21 +35,25 @@ alignment = 1
 [node name="NewGame" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ayoax")
 text = "New Game"
 
 [node name="LoadGame" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hkdew")
 text = "Load Game"
 
 [node name="Settings" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6cn4k")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uu3k3")
 text = "Quit"
 
 [connection signal="pressed" from="MainMenuContainer/NewGame" to="." method="_on_new_game_pressed"]

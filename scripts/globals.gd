@@ -1,48 +1,55 @@
 extends Node
 
+var money = 100
+var reputation = 0
+var held_item = null
+
 var sausages = {
 	"Regular Hot Dog": {"price": 4, "restock": 0.80, "unlocked": true},
-	"Veggie Dog": {"price": 5, "restock": 1.00, "unlocked": true},
-	"Bratwurst": {"price": 5.50, "restock": 1.10, "unlocked": true}
+	"Veggie Dog": {"price": 5, "restock": 1.00, "unlocked": false, "unlock_cost": 200},
+	"Bratwurst": {"price": 5.50, "restock": 1.10, "unlocked": false, "unlock_cost": 300}
 }
 
 var buns = {
 	"White Bun": {"price": 0, "restock": 0.10, "unlocked": true},
-	"Whole Wheat Bun": {"price": 1, "restock": 0.20, "unlocked": true},
-	"Gluten Free Bun": {"price": 2, "restock": 0.40, "unlocked": true}
+	"Whole Wheat Bun": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100},
+	"Gluten Free Bun": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 200}
 }
 
 var toppings = {
 	"Ketchup": {"price": 0.50, "restock": 0.10, "unlocked": true},
 	"Mustard": {"price": 0.50, "restock": 0.10, "unlocked": true},
-	"Relish": {"price": 0.75, "restock": 0.15, "unlocked": true},
-	"Onions": {"price": 0.75, "restock": 0.15, "unlocked": true},
-	"Shredded Cheese": {"price": 0.75, "restock": 0.15, "unlocked": true},
-	"Jalapeños": {"price": 0.75, "restock": 0.15, "unlocked": true},
-	"Chili": {"price": 1, "restock": 0.20, "unlocked": true},
-	"Nacho Cheese": {"price": 1, "restock": 0.20, "unlocked": true}
+	"Relish": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 40},
+	"Onions": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 50},
+	"Shredded Cheese": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 80},
+	"Jalapeños": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 60},
+	"Chili": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 120},
+	"Nacho Cheese": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100}
 }
 
 var sides = {
-	"Potato Chips": {"price": 1.50, "restock": 0.30, "unlocked": true},
-	"Coleslaw": {"price": 2, "restock": 0.40, "unlocked": true},
-	"French Fries": {"price": 2.50, "restock": 0.50, "unlocked": true},
-	"Mac and Cheese": {"price": 4, "restock": 0.80, "unlocked": true}
+	"Potato Chips": {"price": 1.50, "restock": 0.30, "unlocked": false, "unlock_cost": 200},
+	"Coleslaw": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 250},
+	"French Fries": {"price": 2.50, "restock": 0.50, "unlocked": false, "unlock_cost": 300},
+	"Mac and Cheese": {"price": 4, "restock": 0.80, "unlocked": false, "unlock_cost": 500}
 }
 
-var money = 0
-var reputation = 0 
+var park_patience = 18.0
+var campus_patience = 15.0
+var market_patience = 15.0
+var boardwalk_patience = 14.0
+var plaza_patience = 12.0
+var carnival_patience = 12.0
+var arena_patience = 10.0
 
-func update_money(amount):
-	var money_display = get_node("/root/CommunityPark/UI/MoneyDisplay")
-	money += amount
+func update_money():
+	var money_display = get_node("/root/HotdogCart/UI/MoneyDisplay")
 	money_display.text = "Money: $" + str(money)
 
 func update_reputation(points):
-	var reputation_display = get_node("/root/CommunityPark/UI/ReputationDisplay")
+	var reputation_display = get_node("/root/HotdogCart/UI/ReputationDisplay")
 	reputation += points
 	reputation_display.text = "Reputation: " + str(reputation)
-
 
 func generate_order() -> Dictionary:
 	var available_sausages = []
@@ -85,3 +92,24 @@ func generate_order() -> Dictionary:
 		"toppings": order_toppings,
 		"side": side
 	}
+
+func unlock_ingredient(ingredient_type: String, ingredient_name: String) -> bool:
+	var ingredient_dict = null
+	match ingredient_type:
+		"sausage":
+			ingredient_dict = sausages
+		"bun":
+			ingredient_dict = buns
+		"topping":
+			ingredient_dict = toppings
+		"side":
+			ingredient_dict = sides
+		
+	if ingredient_dict and ingredient_name in ingredient_dict:
+		var ingredient = ingredient_dict[ingredient_name]
+		if not ingredient.unlocked and money >= ingredient.unlock_cost:
+			money -= ingredient.unlock_cost
+			update_money()
+			ingredient.unlocked = true
+			return true
+	return false

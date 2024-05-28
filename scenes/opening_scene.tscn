@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1y4ba0ijhwlc"]
+[gd_scene load_steps=4 format=3 uid="uid://c1y4ba0ijhwlc"]
 
 [ext_resource type="Script" path="res://scripts/opening_scene.gd" id="1_c4una"]
 [ext_resource type="Texture2D" uid="uid://tglxt0aq323x" path="res://icon.svg" id="2_eug24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w001r"]
 
 [node name="OpeningScene" type="Control"]
 layout_mode = 3
@@ -39,4 +41,5 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_w001r")
 text = "Next"

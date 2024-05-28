@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8n3hjgfd087d"
-path="res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"
+uid="uid://c8qkrqg3fw5au"
+path="res://.godot/imported/communitypark.png-4e0a09529dfeff909458747908f95365.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/customers/blueguy.png"
-dest_files=["res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"]
+source_file="res://assets/backgrounds/communitypark.png"
+dest_files=["res://.godot/imported/communitypark.png-4e0a09529dfeff909458747908f95365.ctex"]
 
 [params]
 

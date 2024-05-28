@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8n3hjgfd087d"
-path="res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"
+uid="uid://d1qaao5oiit8"
+path="res://.godot/imported/ketchupbottle.png-a93746c664266b467176f81cdf246782.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/customers/blueguy.png"
-dest_files=["res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"]
+source_file="res://assets/ketchupbottle.png"
+dest_files=["res://.godot/imported/ketchupbottle.png-a93746c664266b467176f81cdf246782.ctex"]
 
 [params]
 

@@ -1,0 +1,325 @@
+[gd_scene load_steps=31 format=3 uid="uid://d1tnxs0a7jws"]
+
+[ext_resource type="Script" path="res://scripts/hotdog_cart.gd" id="1_iuwld"]
+[ext_resource type="Texture2D" uid="uid://b4fwovhoop2nd" path="res://assets/hotdogcart.png" id="2_ehlfu"]
+[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="3_3ptto"]
+[ext_resource type="Texture2D" uid="uid://d1qaao5oiit8" path="res://assets/ketchupbottle.png" id="3_gogtt"]
+[ext_resource type="Texture2D" uid="uid://k2p08t2s087h" path="res://assets/mustardbottle.png" id="4_bq38m"]
+[ext_resource type="Texture2D" uid="uid://dtri4igk5luqg" path="res://assets/ordertray.png" id="5_wriet"]
+[ext_resource type="Texture2D" uid="uid://5p60eocyqe8k" path="res://assets/sidebowl.png" id="7_mxsiy"]
+[ext_resource type="Texture2D" uid="uid://djs4207emlg2y" path="res://assets/wrappaper.png" id="8_2dmvp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgfqr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msygn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhobd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvqjp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xielf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lssru"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2jotm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d238h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yugiv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5kis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4c5tb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3fika"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kt6jh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7i68v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jfva1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxt0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lx2cu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2plc1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kj52q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1dsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp7ht"]
+size = Vector2(288, 94)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i53gi"]
+size = Vector2(169.5, 89.5)
+
+[node name="HotdogCart" type="Node2D"]
+script = ExtResource("1_iuwld")
+
+[node name="CartSprite" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = ExtResource("2_ehlfu")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_3ptto")
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Orders" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MoneyDisplay" type="Label" parent="UI"]
+offset_left = 783.0
+offset_top = 2.0
+offset_right = 823.0
+offset_bottom = 25.0
+
+[node name="ReputationDisplay" type="Label" parent="UI"]
+offset_left = 966.0
+offset_top = 1.0
+offset_right = 1006.0
+offset_bottom = 24.0
+
+[node name="CustomerFlow" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Ketchup" type="Button" parent="."]
+offset_left = 820.0
+offset_top = 267.0
+offset_right = 858.0
+offset_bottom = 382.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xgfqr")
+flat = true
+
+[node name="KetchupSprite" type="Sprite2D" parent="Ketchup"]
+z_index = 2
+texture = ExtResource("3_gogtt")
+centered = false
+
+[node name="Mustard" type="Button" parent="."]
+offset_left = 864.0
+offset_top = 306.0
+offset_right = 912.0
+offset_bottom = 382.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_msygn")
+flat = true
+
+[node name="MustardSprite" type="Sprite2D" parent="Mustard"]
+z_index = 2
+texture = ExtResource("4_bq38m")
+centered = false
+
+[node name="Relish" type="Button" parent="."]
+offset_left = 438.0
+offset_top = 442.0
+offset_right = 544.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qhobd")
+text = "Relish"
+
+[node name="Onions" type="Button" parent="."]
+offset_left = 549.0
+offset_top = 442.0
+offset_right = 658.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvqjp")
+text = "Onions"
+
+[node name="Jalapenos" type="Button" parent="."]
+offset_left = 663.0
+offset_top = 442.0
+offset_right = 778.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xielf")
+text = "Jalapenos"
+
+[node name="ShreddedCheese" type="Button" parent="."]
+offset_left = 783.0
+offset_top = 442.0
+offset_right = 897.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lssru")
+text = "Shredded
+Cheese"
+
+[node name="NachoCheese" type="Button" parent="."]
+offset_left = 902.0
+offset_top = 442.0
+offset_right = 1011.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2jotm")
+text = "Nacho
+Cheese"
+
+[node name="Chili" type="Button" parent="."]
+offset_left = 1016.0
+offset_top = 442.0
+offset_right = 1133.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_d238h")
+text = "Chili"
+
+[node name="WhiteBun" type="Button" parent="."]
+offset_left = 18.0
+offset_top = 442.0
+offset_right = 144.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yugiv")
+text = "White Bun"
+
+[node name="WheatBun" type="Button" parent="."]
+offset_left = 149.0
+offset_top = 442.0
+offset_right = 286.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s5kis")
+text = "Whole Wheat
+Bun"
+
+[node name="GFBun" type="Button" parent="."]
+offset_left = 291.0
+offset_top = 442.0
+offset_right = 418.0
+offset_bottom = 529.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4c5tb")
+text = "Gluten-Free
+Bun"
+
+[node name="Hotdog" type="Button" parent="."]
+offset_left = 18.0
+offset_top = 549.0
+offset_right = 143.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3fika")
+text = "Hotdog"
+
+[node name="VeggieDog" type="Button" parent="."]
+offset_left = 148.0
+offset_top = 549.0
+offset_right = 285.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kt6jh")
+text = "Veggie Dog"
+
+[node name="Bratwurst" type="Button" parent="."]
+offset_left = 290.0
+offset_top = 549.0
+offset_right = 417.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7i68v")
+text = "Bratwurst"
+
+[node name="PotatoChips" type="Button" parent="."]
+offset_left = 438.0
+offset_top = 549.0
+offset_right = 597.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jfva1")
+text = "Potato Chips"
+
+[node name="Coleslaw" type="Button" parent="."]
+offset_left = 602.0
+offset_top = 549.0
+offset_right = 778.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rxt0h")
+text = "Coleslaw"
+
+[node name="FrenchFries" type="Button" parent="."]
+offset_left = 783.0
+offset_top = 549.0
+offset_right = 962.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lx2cu")
+text = "French Fries"
+
+[node name="MacCheese" type="Button" parent="."]
+offset_left = 967.0
+offset_top = 549.0
+offset_right = 1133.0
+offset_bottom = 630.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2plc1")
+text = "Mac & Cheese"
+
+[node name="SideBowls" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 303.0
+offset_right = 92.0
+offset_bottom = 411.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kj52q")
+flat = true
+
+[node name="WrapPapers" type="Button" parent="."]
+offset_left = 128.0
+offset_top = 335.0
+offset_right = 248.0
+offset_bottom = 416.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i1dsx")
+flat = true
+
+[node name="OrderTray" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(566, 375)
+texture = ExtResource("5_wriet")
+
+[node name="SideBowl" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-513, -48)
+texture = ExtResource("7_mxsiy")
+
+[node name="WrapPaper" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-370, -5)
+texture = ExtResource("8_2dmvp")
+
+[node name="TrayArea" type="Area2D" parent="."]
+z_index = 2
+position = Vector2(567, 374)
+
+[node name="TrayCollisionShape" type="CollisionShape2D" parent="TrayArea"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_rp7ht")
+
+[node name="GarbageArea" type="Area2D" parent="."]
+position = Vector2(1061, 374)
+
+[node name="GarbageCollisionShape" type="CollisionShape2D" parent="GarbageArea"]
+position = Vector2(0.25, -0.25)
+shape = SubResource("RectangleShape2D_i53gi")
+
+[node name="DragTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]
+[connection signal="pressed" from="Ketchup" to="." method="_on_ketchup_pressed"]
+[connection signal="pressed" from="Mustard" to="." method="_on_mustard_pressed"]
+[connection signal="pressed" from="Relish" to="." method="_on_relish_pressed"]
+[connection signal="pressed" from="Onions" to="." method="_on_onions_pressed"]
+[connection signal="pressed" from="Jalapenos" to="." method="_on_jalapenos_pressed"]
+[connection signal="pressed" from="ShreddedCheese" to="." method="_on_shredded_cheese_pressed"]
+[connection signal="pressed" from="NachoCheese" to="." method="_on_nacho_cheese_pressed"]
+[connection signal="pressed" from="Chili" to="." method="_on_chili_pressed"]
+[connection signal="pressed" from="WhiteBun" to="." method="_on_white_bun_pressed"]
+[connection signal="pressed" from="WheatBun" to="." method="_on_wheat_bun_pressed"]
+[connection signal="pressed" from="GFBun" to="." method="_on_gf_bun_pressed"]
+[connection signal="pressed" from="Hotdog" to="." method="_on_hotdog_pressed"]
+[connection signal="pressed" from="VeggieDog" to="." method="_on_veggie_dog_pressed"]
+[connection signal="pressed" from="Bratwurst" to="." method="_on_bratwurst_pressed"]
+[connection signal="pressed" from="PotatoChips" to="." method="_on_potato_chips_pressed"]
+[connection signal="pressed" from="Coleslaw" to="." method="_on_coleslaw_pressed"]
+[connection signal="pressed" from="FrenchFries" to="." method="_on_french_fries_pressed"]
+[connection signal="pressed" from="MacCheese" to="." method="_on_mac_cheese_pressed"]
+[connection signal="pressed" from="SideBowls" to="." method="_on_side_bowls_pressed"]
+[connection signal="pressed" from="WrapPapers" to="." method="_on_wrap_papers_pressed"]
+[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_input_event"]
+[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_gui_input_event"]
+[connection signal="input_event" from="GarbageArea" to="." method="_on_garbage_area_input_event"]
+[connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]

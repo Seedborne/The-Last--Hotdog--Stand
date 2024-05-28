@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8n3hjgfd087d"
-path="res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"
+uid="uid://5p60eocyqe8k"
+path="res://.godot/imported/sidebowl.png-9319984d66bff7ca56f19097be20f817.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/customers/blueguy.png"
-dest_files=["res://.godot/imported/blueguy.png-161d02c049415e99ef36c8c00bf2b543.ctex"]
+source_file="res://assets/sidebowl.png"
+dest_files=["res://.godot/imported/sidebowl.png-9319984d66bff7ca56f19097be20f817.ctex"]
 
 [params]
 
