@@ -7,8 +7,12 @@ var side: String
 
 func _ready():
 	_show_order_ticket()
+
+func _show_order_ticket():
 	$VBoxContainer/SausageType.text = sausage_type
 	$VBoxContainer/BunType.text = bun_type
+	for child in $VBoxContainer/Toppings.get_children():
+		child.queue_free()
 	for topping in toppings:
 		var topping_label = Label.new()
 		topping_label.text = topping
@@ -17,8 +21,6 @@ func _ready():
 			$VBoxContainer/Side.text = side
 		else:
 			$VBoxContainer/Side.text = ""
-
-func _show_order_ticket():
 	self.visible = true
 	$HideTimer.start()
 	

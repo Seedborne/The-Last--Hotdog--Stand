@@ -1,8 +1,15 @@
 extends Node
 
-var money = 100
+var money = 0.00
 var reputation = 0
 var held_item = null
+
+var tray_contents = {
+	"bun": "",
+	"sausage": "",
+	"toppings": [],
+	"side": ""
+}
 
 var sausages = {
 	"Regular Hot Dog": {"price": 4, "restock": 0.80, "unlocked": true},
@@ -44,7 +51,7 @@ var arena_patience = 10.0
 
 func update_money():
 	var money_display = get_node("/root/HotdogCart/UI/MoneyDisplay")
-	money_display.text = "Money: $" + str(money)
+	money_display.text = "Money: $" + str("%.2f" % money)
 
 func update_reputation(points):
 	var reputation_display = get_node("/root/HotdogCart/UI/ReputationDisplay")
@@ -113,3 +120,39 @@ func unlock_ingredient(ingredient_type: String, ingredient_name: String) -> bool
 			ingredient.unlocked = true
 			return true
 	return false
+
+func add_to_tray(item: String, type: String):
+	print(item, " ADDED")
+	if type == "bun":
+		tray_contents["bun"] = item
+		money -= buns[item]["restock"]
+	elif type == "sausage":
+		tray_contents["sausage"] = item
+		money -= sausages[item]["restock"]
+	elif type == "topping":
+		if item not in tray_contents["toppings"]:
+			tray_contents["toppings"].append(item)
+			money -= toppings[item]["restock"]
+	elif type == "side":
+		tray_contents["side"] = item
+		money -= sides[item]["restock"]
+	print("Current money: ", money)
+	Globals.update_money() #maybe don't update live so to provide update at end of level, but on for testing
+
+func clear_tray():
+	tray_contents = {
+		"bun": "",
+		"sausage": "",
+		"toppings": [],
+		"side": ""
+	}
+
+func get_order_value(order):
+	var total_value = 0
+	total_value += sausages[order["sausage"]]["price"]
+	total_value += buns[order["bun"]]["price"]
+	for topping in order["toppings"]:
+		total_value += toppings[topping]["price"]
+	if order["side"] != "":
+		total_value += sides[order["side"]]["price"]
+	return total_value

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1y4ba0ijhwlc"]
+[gd_scene load_steps=5 format=3 uid="uid://c1y4ba0ijhwlc"]
 
 [ext_resource type="Script" path="res://scripts/opening_scene.gd" id="1_c4una"]
+[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_6jt1f"]
 [ext_resource type="Texture2D" uid="uid://tglxt0aq323x" path="res://icon.svg" id="2_eug24"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w001r"]
@@ -11,6 +12,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_c4una")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_6jt1f")
+centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

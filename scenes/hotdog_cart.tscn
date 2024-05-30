@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d1tnxs0a7jws"]
+[gd_scene load_steps=45 format=3 uid="uid://d1tnxs0a7jws"]
 
 [ext_resource type="Script" path="res://scripts/hotdog_cart.gd" id="1_iuwld"]
 [ext_resource type="Texture2D" uid="uid://b4fwovhoop2nd" path="res://assets/hotdogcart.png" id="2_ehlfu"]
@@ -8,12 +8,28 @@
 [ext_resource type="Texture2D" uid="uid://dtri4igk5luqg" path="res://assets/ordertray.png" id="5_wriet"]
 [ext_resource type="Texture2D" uid="uid://5p60eocyqe8k" path="res://assets/sidebowl.png" id="7_mxsiy"]
 [ext_resource type="Texture2D" uid="uid://djs4207emlg2y" path="res://assets/wrappaper.png" id="8_2dmvp"]
+[ext_resource type="Texture2D" uid="uid://dfjgb66hdjiqw" path="res://assets/ingredients/hotdog.png" id="9_8gx02"]
+[ext_resource type="Texture2D" uid="uid://cke5q3n5lllyy" path="res://assets/ingredients/veggiedog.png" id="10_2h10a"]
+[ext_resource type="Texture2D" uid="uid://c0v8m0wlls8gy" path="res://assets/ingredients/whitebun.png" id="10_mh4m5"]
+[ext_resource type="Texture2D" uid="uid://crah23g5fuwem" path="res://assets/ingredients/bratwurst.png" id="11_eeo64"]
+[ext_resource type="Texture2D" uid="uid://bbgbqybredvd8" path="res://assets/ingredients/wheatbun.png" id="13_bioql"]
+[ext_resource type="Texture2D" uid="uid://dxkwu0gcgxhuu" path="res://assets/ingredients/gfbun.png" id="14_f4f4n"]
+[ext_resource type="Texture2D" uid="uid://bbbkw48jd87q1" path="res://assets/ingredients/ketchup.png" id="15_23xac"]
+[ext_resource type="Texture2D" uid="uid://ckadtdsrjf2ys" path="res://assets/ingredients/mustard.png" id="16_8wvvv"]
+[ext_resource type="Texture2D" uid="uid://ds1ss8cr4ll2y" path="res://assets/ingredients/onions.png" id="17_pexc3"]
+[ext_resource type="Texture2D" uid="uid://yuijgmuhpnm8" path="res://assets/ingredients/jalapenos.png" id="18_vr31p"]
+[ext_resource type="Texture2D" uid="uid://cwfc6au1v7e6x" path="res://assets/ingredients/shreddedcheese.png" id="19_jxkmq"]
+[ext_resource type="Texture2D" uid="uid://by80200tsaw0h" path="res://assets/ingredients/nachocheese.png" id="20_gykon"]
+[ext_resource type="Texture2D" uid="uid://dp1q1j4a7qhv5" path="res://assets/ingredients/chili.png" id="21_cyxug"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgfqr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msygn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhobd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x27uf"]
+bg_color = Color(0.286275, 0.286275, 0.286275, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvqjp"]
 
@@ -87,6 +103,10 @@ offset_top = 1.0
 offset_right = 1006.0
 offset_bottom = 24.0
 
+[node name="DayTimer" type="Timer" parent="."]
+wait_time = 120.0
+one_shot = true
+
 [node name="CustomerFlow" type="Timer" parent="."]
 wait_time = 10.0
 
@@ -122,7 +142,17 @@ offset_top = 442.0
 offset_right = 544.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qhobd")
-text = "Relish"
+text = "Relish
+(Locked)"
+
+[node name="RelishUnlock" type="Button" parent="Relish"]
+visible = false
+layout_mode = 0
+offset_right = 106.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$40"
 
 [node name="Onions" type="Button" parent="."]
 offset_left = 549.0
@@ -130,7 +160,16 @@ offset_top = 442.0
 offset_right = 658.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bvqjp")
-text = "Onions"
+text = "Onions
+(Locked)"
+
+[node name="OnionsUnlock" type="Button" parent="Onions"]
+visible = false
+offset_right = 109.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$50"
 
 [node name="Jalapenos" type="Button" parent="."]
 offset_left = 663.0
@@ -138,7 +177,16 @@ offset_top = 442.0
 offset_right = 778.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xielf")
-text = "Jalapenos"
+text = "Jalapeños
+(Locked)"
+
+[node name="JalapenosUnlock" type="Button" parent="Jalapenos"]
+visible = false
+offset_right = 115.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$60"
 
 [node name="ShreddedCheese" type="Button" parent="."]
 offset_left = 783.0
@@ -147,7 +195,16 @@ offset_right = 897.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lssru")
 text = "Shredded
-Cheese"
+Cheese 
+(Locked)"
+
+[node name="ShreddedCheeseUnlock" type="Button" parent="ShreddedCheese"]
+visible = false
+offset_right = 114.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$80"
 
 [node name="NachoCheese" type="Button" parent="."]
 offset_left = 902.0
@@ -156,7 +213,16 @@ offset_right = 1011.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2jotm")
 text = "Nacho
-Cheese"
+Cheese
+(Locked)"
+
+[node name="NachoCheeseUnlock" type="Button" parent="NachoCheese"]
+visible = false
+offset_right = 109.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$100"
 
 [node name="Chili" type="Button" parent="."]
 offset_left = 1016.0
@@ -164,7 +230,16 @@ offset_top = 442.0
 offset_right = 1133.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d238h")
-text = "Chili"
+text = "Chili
+(Locked)"
+
+[node name="ChiliUnlock" type="Button" parent="Chili"]
+visible = false
+offset_right = 117.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$120"
 
 [node name="WhiteBun" type="Button" parent="."]
 offset_left = 18.0
@@ -181,7 +256,17 @@ offset_right = 286.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s5kis")
 text = "Whole Wheat
-Bun"
+Bun
+(Locked)
+"
+
+[node name="WheatUnlock" type="Button" parent="WheatBun"]
+visible = false
+offset_right = 137.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$100"
 
 [node name="GFBun" type="Button" parent="."]
 offset_left = 291.0
@@ -189,8 +274,17 @@ offset_top = 442.0
 offset_right = 418.0
 offset_bottom = 529.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4c5tb")
-text = "Gluten-Free
-Bun"
+text = "Gluten Free
+Bun
+(Locked)"
+
+[node name="GFBunUnlock" type="Button" parent="GFBun"]
+visible = false
+offset_right = 127.0
+offset_bottom = 87.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$200"
 
 [node name="Hotdog" type="Button" parent="."]
 offset_left = 18.0
@@ -206,7 +300,16 @@ offset_top = 549.0
 offset_right = 285.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kt6jh")
-text = "Veggie Dog"
+text = "Veggie Dog
+(Locked)"
+
+[node name="VeggieDogUnlock" type="Button" parent="VeggieDog"]
+visible = false
+offset_right = 137.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$200"
 
 [node name="Bratwurst" type="Button" parent="."]
 offset_left = 290.0
@@ -214,7 +317,16 @@ offset_top = 549.0
 offset_right = 417.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i68v")
-text = "Bratwurst"
+text = "Bratwurst
+(Locked)"
+
+[node name="BratwurstUnlock" type="Button" parent="Bratwurst"]
+visible = false
+offset_right = 127.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$300"
 
 [node name="PotatoChips" type="Button" parent="."]
 offset_left = 438.0
@@ -222,7 +334,16 @@ offset_top = 549.0
 offset_right = 597.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jfva1")
-text = "Potato Chips"
+text = "Potato Chips
+(Locked)"
+
+[node name="ChipsUnlock" type="Button" parent="PotatoChips"]
+visible = false
+offset_right = 159.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$200"
 
 [node name="Coleslaw" type="Button" parent="."]
 offset_left = 602.0
@@ -230,7 +351,16 @@ offset_top = 549.0
 offset_right = 778.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxt0h")
-text = "Coleslaw"
+text = "Coleslaw
+(Locked)"
+
+[node name="ColeslawUnlock" type="Button" parent="Coleslaw"]
+visible = false
+offset_right = 176.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$250"
 
 [node name="FrenchFries" type="Button" parent="."]
 offset_left = 783.0
@@ -238,7 +368,16 @@ offset_top = 549.0
 offset_right = 962.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lx2cu")
-text = "French Fries"
+text = "French Fries
+(Locked)"
+
+[node name="FriesUnlock" type="Button" parent="FrenchFries"]
+visible = false
+offset_right = 179.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$300"
 
 [node name="MacCheese" type="Button" parent="."]
 offset_left = 967.0
@@ -246,7 +385,16 @@ offset_top = 549.0
 offset_right = 1133.0
 offset_bottom = 630.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2plc1")
-text = "Mac & Cheese"
+text = "Mac & Cheese
+(Locked)"
+
+[node name="MacUnlock" type="Button" parent="MacCheese"]
+visible = false
+offset_right = 166.0
+offset_bottom = 81.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
+text = "$500"
 
 [node name="SideBowls" type="Button" parent="."]
 offset_left = 13.0
@@ -279,11 +427,108 @@ visible = false
 position = Vector2(-370, -5)
 texture = ExtResource("8_2dmvp")
 
+[node name="HotdogOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("9_8gx02")
+
+[node name="VeggieDogOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_2h10a")
+
+[node name="BratwurstOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("11_eeo64")
+
+[node name="WhiteBunOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("10_mh4m5")
+
+[node name="WheatBunOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("13_bioql")
+
+[node name="GFBunOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("14_f4f4n")
+
+[node name="KetchupOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_23xac")
+
+[node name="MustardOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("16_8wvvv")
+
+[node name="RelishOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_pexc3")
+
+[node name="OnionsOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_pexc3")
+
+[node name="JalapenosOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("18_vr31p")
+
+[node name="ShreddedCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_jxkmq")
+
+[node name="NachoCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("20_gykon")
+
+[node name="ChiliOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-55, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("21_cyxug")
+
+[node name="PotatoChipsOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+
+[node name="ColeslawOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+
+[node name="FriesOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+
+[node name="MacCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+
 [node name="TrayArea" type="Area2D" parent="."]
 z_index = 2
 position = Vector2(567, 374)
 
 [node name="TrayCollisionShape" type="CollisionShape2D" parent="TrayArea"]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_rp7ht")
 
@@ -298,25 +543,40 @@ shape = SubResource("RectangleShape2D_i53gi")
 wait_time = 0.2
 one_shot = true
 
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]
 [connection signal="pressed" from="Ketchup" to="." method="_on_ketchup_pressed"]
 [connection signal="pressed" from="Mustard" to="." method="_on_mustard_pressed"]
 [connection signal="pressed" from="Relish" to="." method="_on_relish_pressed"]
+[connection signal="pressed" from="Relish/RelishUnlock" to="." method="_on_relish_unlock_pressed"]
 [connection signal="pressed" from="Onions" to="." method="_on_onions_pressed"]
+[connection signal="pressed" from="Onions/OnionsUnlock" to="." method="_on_onions_unlock_pressed"]
 [connection signal="pressed" from="Jalapenos" to="." method="_on_jalapenos_pressed"]
+[connection signal="pressed" from="Jalapenos/JalapenosUnlock" to="." method="_on_jalapenos_unlock_pressed"]
 [connection signal="pressed" from="ShreddedCheese" to="." method="_on_shredded_cheese_pressed"]
+[connection signal="pressed" from="ShreddedCheese/ShreddedCheeseUnlock" to="." method="_on_shredded_cheese_unlock_pressed"]
 [connection signal="pressed" from="NachoCheese" to="." method="_on_nacho_cheese_pressed"]
+[connection signal="pressed" from="NachoCheese/NachoCheeseUnlock" to="." method="_on_nacho_cheese_unlock_pressed"]
 [connection signal="pressed" from="Chili" to="." method="_on_chili_pressed"]
+[connection signal="pressed" from="Chili/ChiliUnlock" to="." method="_on_chili_unlock_pressed"]
 [connection signal="pressed" from="WhiteBun" to="." method="_on_white_bun_pressed"]
 [connection signal="pressed" from="WheatBun" to="." method="_on_wheat_bun_pressed"]
+[connection signal="pressed" from="WheatBun/WheatUnlock" to="." method="_on_wheat_unlock_pressed"]
 [connection signal="pressed" from="GFBun" to="." method="_on_gf_bun_pressed"]
+[connection signal="pressed" from="GFBun/GFBunUnlock" to="." method="_on_gf_bun_unlock_pressed"]
 [connection signal="pressed" from="Hotdog" to="." method="_on_hotdog_pressed"]
 [connection signal="pressed" from="VeggieDog" to="." method="_on_veggie_dog_pressed"]
+[connection signal="pressed" from="VeggieDog/VeggieDogUnlock" to="." method="_on_veggie_dog_unlock_pressed"]
 [connection signal="pressed" from="Bratwurst" to="." method="_on_bratwurst_pressed"]
+[connection signal="pressed" from="Bratwurst/BratwurstUnlock" to="." method="_on_bratwurst_unlock_pressed"]
 [connection signal="pressed" from="PotatoChips" to="." method="_on_potato_chips_pressed"]
+[connection signal="pressed" from="PotatoChips/ChipsUnlock" to="." method="_on_chips_unlock_pressed"]
 [connection signal="pressed" from="Coleslaw" to="." method="_on_coleslaw_pressed"]
+[connection signal="pressed" from="Coleslaw/ColeslawUnlock" to="." method="_on_coleslaw_unlock_pressed"]
 [connection signal="pressed" from="FrenchFries" to="." method="_on_french_fries_pressed"]
+[connection signal="pressed" from="FrenchFries/FriesUnlock" to="." method="_on_fries_unlock_pressed"]
 [connection signal="pressed" from="MacCheese" to="." method="_on_mac_cheese_pressed"]
+[connection signal="pressed" from="MacCheese/MacUnlock" to="." method="_on_mac_unlock_pressed"]
 [connection signal="pressed" from="SideBowls" to="." method="_on_side_bowls_pressed"]
 [connection signal="pressed" from="WrapPapers" to="." method="_on_wrap_papers_pressed"]
 [connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_input_event"]

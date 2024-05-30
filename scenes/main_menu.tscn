@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ykwbo3tp6to"]
+[gd_scene load_steps=8 format=3 uid="uid://4ykwbo3tp6to"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_agw42"]
+[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_qwunh"]
+[ext_resource type="Texture2D" uid="uid://irycmlysh28n" path="res://assets/hotdogcarttest.png" id="3_m4c45"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayoax"]
 
@@ -21,14 +23,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_agw42")
 
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_qwunh")
+
+[node name="HotdogCart" type="Sprite2D" parent="."]
+texture = ExtResource("3_m4c45")
+
 [node name="MainMenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -102.0
+offset_top = 70.0
 offset_right = 102.0
-offset_bottom = 244.0
+offset_bottom = 314.0
 grow_horizontal = 2
 alignment = 1
 
