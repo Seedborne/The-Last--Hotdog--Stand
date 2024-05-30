@@ -92,16 +92,40 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MoneyDisplay" type="Label" parent="UI"]
-offset_left = 783.0
-offset_top = 2.0
-offset_right = 823.0
-offset_bottom = 25.0
+offset_left = 288.0
+offset_right = 418.0
+offset_bottom = 23.0
+size_flags_horizontal = 4
+text = "Money: $0.00"
+horizontal_alignment = 1
 
 [node name="ReputationDisplay" type="Label" parent="UI"]
-offset_left = 966.0
-offset_top = 1.0
-offset_right = 1006.0
-offset_bottom = 24.0
+offset_left = 736.0
+offset_right = 893.0
+offset_bottom = 23.0
+text = "Reputation: 0"
+horizontal_alignment = 1
+
+[node name="ReputationTier" type="Label" parent="UI"]
+offset_left = 976.0
+offset_right = 1149.0
+offset_bottom = 23.0
+text = "Bun Beginner"
+horizontal_alignment = 1
+
+[node name="Clock" type="Label" parent="UI"]
+offset_left = 552.0
+offset_right = 592.0
+offset_bottom = 23.0
+text = "0:00"
+horizontal_alignment = 1
+
+[node name="DayTracker" type="Label" parent="UI"]
+offset_left = 112.0
+offset_right = 155.0
+offset_bottom = 23.0
+text = "Day: 1"
+horizontal_alignment = 1
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 120.0
@@ -165,6 +189,7 @@ text = "Onions
 
 [node name="OnionsUnlock" type="Button" parent="Onions"]
 visible = false
+layout_mode = 0
 offset_right = 109.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -182,6 +207,7 @@ text = "Jalapeños
 
 [node name="JalapenosUnlock" type="Button" parent="Jalapenos"]
 visible = false
+layout_mode = 0
 offset_right = 115.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -200,6 +226,7 @@ Cheese
 
 [node name="ShreddedCheeseUnlock" type="Button" parent="ShreddedCheese"]
 visible = false
+layout_mode = 0
 offset_right = 114.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -218,6 +245,7 @@ Cheese
 
 [node name="NachoCheeseUnlock" type="Button" parent="NachoCheese"]
 visible = false
+layout_mode = 0
 offset_right = 109.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -235,6 +263,7 @@ text = "Chili
 
 [node name="ChiliUnlock" type="Button" parent="Chili"]
 visible = false
+layout_mode = 0
 offset_right = 117.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -262,6 +291,7 @@ Bun
 
 [node name="WheatUnlock" type="Button" parent="WheatBun"]
 visible = false
+layout_mode = 0
 offset_right = 137.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -280,6 +310,7 @@ Bun
 
 [node name="GFBunUnlock" type="Button" parent="GFBun"]
 visible = false
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 87.0
 theme_override_font_sizes/font_size = 30
@@ -305,6 +336,7 @@ text = "Veggie Dog
 
 [node name="VeggieDogUnlock" type="Button" parent="VeggieDog"]
 visible = false
+layout_mode = 0
 offset_right = 137.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -322,6 +354,7 @@ text = "Bratwurst
 
 [node name="BratwurstUnlock" type="Button" parent="Bratwurst"]
 visible = false
+layout_mode = 0
 offset_right = 127.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -339,6 +372,7 @@ text = "Potato Chips
 
 [node name="ChipsUnlock" type="Button" parent="PotatoChips"]
 visible = false
+layout_mode = 0
 offset_right = 159.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -356,6 +390,7 @@ text = "Coleslaw
 
 [node name="ColeslawUnlock" type="Button" parent="Coleslaw"]
 visible = false
+layout_mode = 0
 offset_right = 176.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -373,6 +408,7 @@ text = "French Fries
 
 [node name="FriesUnlock" type="Button" parent="FrenchFries"]
 visible = false
+layout_mode = 0
 offset_right = 179.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -390,6 +426,7 @@ text = "Mac & Cheese
 
 [node name="MacUnlock" type="Button" parent="MacCheese"]
 visible = false
+layout_mode = 0
 offset_right = 166.0
 offset_bottom = 81.0
 theme_override_font_sizes/font_size = 30
@@ -543,6 +580,10 @@ shape = SubResource("RectangleShape2D_i53gi")
 wait_time = 0.2
 one_shot = true
 
+[node name="CustomerServedTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]
 [connection signal="pressed" from="Ketchup" to="." method="_on_ketchup_pressed"]
@@ -583,3 +624,4 @@ one_shot = true
 [connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_gui_input_event"]
 [connection signal="input_event" from="GarbageArea" to="." method="_on_garbage_area_input_event"]
 [connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]
+[connection signal="timeout" from="CustomerServedTimer" to="." method="_on_customer_served_timer_timeout"]

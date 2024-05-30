@@ -2,7 +2,20 @@ extends Node
 
 var money = 0.00
 var reputation = 0
+
+var current_day = 1
+var customers_served = 0
+var customers_lost = 0
+var daily_sales = 0.0
+var daily_tips = 0.0
+var daily_ingredients_cost = 0.0
+var new_permit_cost = 0.0
+var reputation_points_earned = 0
+var speed_bonus_earned = 0
+var reputation_points_lost = 0
+
 var held_item = null
+var order_correct = false
 
 var tray_contents = {
 	"bun": "",
@@ -12,33 +25,33 @@ var tray_contents = {
 }
 
 var sausages = {
-	"Regular Hot Dog": {"price": 4, "restock": 0.80, "unlocked": true},
-	"Veggie Dog": {"price": 5, "restock": 1.00, "unlocked": false, "unlock_cost": 200},
-	"Bratwurst": {"price": 5.50, "restock": 1.10, "unlocked": false, "unlock_cost": 300}
+	"Regular Hot Dog": {"price": 4, "restock": 0.80, "unlocked": true, "reputation_value": 3},
+	"Veggie Dog": {"price": 5, "restock": 1.00, "unlocked": false, "unlock_cost": 200, "reputation_value": 4},
+	"Bratwurst": {"price": 5.50, "restock": 1.10, "unlocked": false, "unlock_cost": 300, "reputation_value": 5}
 }
 
 var buns = {
-	"White Bun": {"price": 0, "restock": 0.10, "unlocked": true},
-	"Whole Wheat Bun": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100},
-	"Gluten Free Bun": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 200}
+	"White Bun": {"price": 0, "restock": 0.10, "unlocked": true, "reputation_value": 2},
+	"Whole Wheat Bun": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100, "reputation_value": 3},
+	"Gluten Free Bun": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 200, "reputation_value": 4}
 }
 
 var toppings = {
-	"Ketchup": {"price": 0.50, "restock": 0.10, "unlocked": true},
-	"Mustard": {"price": 0.50, "restock": 0.10, "unlocked": true},
-	"Relish": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 40},
-	"Onions": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 50},
-	"Shredded Cheese": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 80},
-	"Jalapeños": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 60},
-	"Chili": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 120},
-	"Nacho Cheese": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100}
+	"Ketchup": {"price": 0.50, "restock": 0.10, "unlocked": true, "reputation_value": 1},
+	"Mustard": {"price": 0.50, "restock": 0.10, "unlocked": true, "reputation_value": 1},
+	"Relish": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 40, "reputation_value": 1},
+	"Onions": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 50, "reputation_value": 1},
+	"Shredded Cheese": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 80, "reputation_value": 1},
+	"Jalapeños": {"price": 0.75, "restock": 0.15, "unlocked": false, "unlock_cost": 60, "reputation_value": 1},
+	"Chili": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 120, "reputation_value": 1},
+	"Nacho Cheese": {"price": 1, "restock": 0.20, "unlocked": false, "unlock_cost": 100, "reputation_value": 1}
 }
 
 var sides = {
-	"Potato Chips": {"price": 1.50, "restock": 0.30, "unlocked": false, "unlock_cost": 200},
-	"Coleslaw": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 250},
-	"French Fries": {"price": 2.50, "restock": 0.50, "unlocked": false, "unlock_cost": 300},
-	"Mac and Cheese": {"price": 4, "restock": 0.80, "unlocked": false, "unlock_cost": 500}
+	"Potato Chips": {"price": 1.50, "restock": 0.30, "unlocked": false, "unlock_cost": 200, "reputation_value": 1},
+	"Coleslaw": {"price": 2, "restock": 0.40, "unlocked": false, "unlock_cost": 250, "reputation_value": 2},
+	"French Fries": {"price": 2.50, "restock": 0.50, "unlocked": false, "unlock_cost": 300, "reputation_value": 3},
+	"Mac and Cheese": {"price": 4, "restock": 0.80, "unlocked": false, "unlock_cost": 500, "reputation_value": 4}
 }
 
 var park_patience = 18.0
@@ -53,46 +66,90 @@ func update_money():
 	var money_display = get_node("/root/HotdogCart/UI/MoneyDisplay")
 	money_display.text = "Money: $" + str("%.2f" % money)
 
-func update_reputation(points):
+func update_reputation():
 	var reputation_display = get_node("/root/HotdogCart/UI/ReputationDisplay")
-	reputation += points
 	reputation_display.text = "Reputation: " + str(reputation)
+	update_tier()
+	
+func reset_daily_metrics():
+	customers_served = 0
+	customers_lost = 0
+	daily_sales = 0.0
+	daily_tips = 0.0
+	daily_ingredients_cost = 0.0
+	new_permit_cost = 0.0
+	reputation_points_earned = 0
+	speed_bonus_earned = 0
+	reputation_points_lost = 0
 
+func get_net_profit() -> float:
+	return daily_sales + daily_tips - daily_ingredients_cost
+
+func get_net_reputation_gain() -> int:
+	return reputation_points_earned + speed_bonus_earned - reputation_points_lost
+
+func update_daily_ingredients_cost(item_type: String, item_name: String):
+	match item_type:
+		"sausage":
+			daily_ingredients_cost += sausages[item_name]["restock"]
+		"bun":
+			daily_ingredients_cost += buns[item_name]["restock"]
+		"topping":
+			daily_ingredients_cost += toppings[item_name]["restock"]
+		"side":
+			daily_ingredients_cost += sides[item_name]["restock"]
+
+func update_tier():
+	var reputation_tier = get_node("/root/HotdogCart/UI/ReputationTier")
+	if reputation <= 1000:
+		reputation_tier.text = "Bun Beginner"
+	if reputation >= 1001 and reputation <= 2000:
+		reputation_tier.text = "Relish Rookie"
+	if reputation >= 2001 and reputation <= 3000:
+		reputation_tier.text = "Hotdog Hopeful"
+	if reputation >= 3001 and reputation <= 4000:
+		reputation_tier.text = "Grill Greenhorn"
+	if reputation >= 4001 and reputation <= 5000:
+		reputation_tier.text = "Ketchup Connoisseur"
+	if reputation >= 5001 and reputation <= 6000:
+		reputation_tier.text = "Mustard Maestro"
+	if reputation >= 6001 and reputation <= 7000:
+		reputation_tier.text = "Grill Guru"
+	if reputation >= 7001 and reputation <= 8000:
+		reputation_tier.text = "Bun Boss"
+	if reputation >= 8001 and reputation <= 9000:
+		reputation_tier.text = "Hotdog Hero"
+	if reputation >= 9001:
+		reputation_tier.text = "Legendary Linkmaster"
+		
 func generate_order() -> Dictionary:
 	var available_sausages = []
 	for sausage in sausages.keys():
 		if sausages[sausage].unlocked:
 			available_sausages.append(sausage)
-
 	var available_buns = []
 	for bun in buns.keys():
 		if buns[bun].unlocked:
 			available_buns.append(bun)
-
 	var available_toppings = []
 	for topping in toppings.keys():
 		if toppings[topping].unlocked:
 			available_toppings.append(topping)
-
 	var available_sides = []
 	for side in sides.keys():
 		if sides[side].unlocked:
 			available_sides.append(side)
-
 	var sausage = available_sausages[randi() % available_sausages.size()]
 	var bun = available_buns[randi() % available_buns.size()]
-
 	var num_toppings = randi() % (available_toppings.size() + 1)
 	var order_toppings = []
 	for i in range(num_toppings):
 		var topping = available_toppings[randi() % available_toppings.size()]
 		if topping not in order_toppings:
 			order_toppings.append(topping)
-
 	var side = ""
-	if available_sides.size() > 0 and randf() > 0.4:
+	if available_sides.size() > 0 and randf() > 0.5:
 		side = available_sides[randi() % available_sides.size()]
-
 	return {
 		"sausage": sausage,
 		"bun": bun,
@@ -136,7 +193,7 @@ func add_to_tray(item: String, type: String):
 	elif type == "side":
 		tray_contents["side"] = item
 		money -= sides[item]["restock"]
-	print("Current money: ", money)
+	print("Current money: $", money)
 	Globals.update_money() #maybe don't update live so to provide update at end of level, but on for testing
 
 func clear_tray():
@@ -147,12 +204,28 @@ func clear_tray():
 		"side": ""
 	}
 
-func get_order_value(order):
-	var total_value = 0
-	total_value += sausages[order["sausage"]]["price"]
-	total_value += buns[order["bun"]]["price"]
+func get_order_value(order: Dictionary) -> float:
+	var total_value = 0.00
+	if order.has("sausage") and order["sausage"] in sausages:
+		total_value += sausages[order["sausage"]]["price"]
+	if order.has("bun") and order["bun"] in buns:
+		total_value += buns[order["bun"]]["price"]
 	for topping in order["toppings"]:
-		total_value += toppings[topping]["price"]
-	if order["side"] != "":
+		if topping in toppings:
+			total_value += toppings[topping]["price"]
+	if order.has("side") and order["side"] in sides and order["side"] != "":
 		total_value += sides[order["side"]]["price"]
 	return total_value
+
+func get_order_reputation(order):
+	var total_reputation = 0
+	if order.has("sausage") and order["sausage"] in sausages:
+		total_reputation += sausages[order["sausage"]]["reputation_value"]
+	if order.has("bun") and order["bun"] in buns:
+		total_reputation += buns[order["bun"]]["reputation_value"]
+	for topping in order["toppings"]:
+		if topping in toppings:
+			total_reputation += toppings[topping]["reputation_value"]
+	if order.has("side") and order["side"] in sides and order["side"] != "":
+		total_reputation += sides[order["side"]]["reputation_value"]
+	return total_reputation

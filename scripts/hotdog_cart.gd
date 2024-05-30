@@ -43,12 +43,15 @@ var customer_scene = preload("res://scenes/customer.tscn")
 
 func _ready():
 	Globals.update_money()
-	Globals.update_reputation(0)
+	Globals.update_reputation()
 	$DayTimer.start()
 	$CustomerFlow.start()
-	print("Day started")
+	Globals.customers_served = 0
+	Globals.customers_lost = 0
+	print("Day ", Globals.current_day, " started")
 
 func _process(_delta):
+	$UI/Clock.text = String("%0.2f" % $DayTimer.time_left)
 	if dragging_tray:
 		$OrderTray.position = get_global_mouse_position()
 		$TrayArea.position = get_global_mouse_position()
@@ -75,8 +78,11 @@ func _process(_delta):
 
 func _on_day_timer_timeout():
 	$CustomerFlow.stop()
+	Globals.current_day += 1
+	$UI/DayTracker.text = "Day: " + str(Globals.current_day)
+	get_tree().change_scene_to_file("res://scenes/daily_report.tscn")
 	print("Day finished")
-	
+
 func _create_order():
 	var order_ticket = order_ticket_scene.instantiate()
 	var customer = customer_scene.instantiate()
@@ -114,9 +120,12 @@ func _on_customer_left(customer):
 		var order_ticket = customer.order_ticket
 		if order_ticket:
 			order_ticket.queue_free()
-		#customer.queue_free() maybe not need because redundant in customer.gd
+		
+	$CustomerServedTimer.start()
+
+func _on_customer_served_timer_timeout():
 	_update_customer_positions()
-	
+
 func _update_customer_positions():
 	for i in range(current_customers.size()):
 		current_customers[i].position = customer_positions[i]
@@ -533,6 +542,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Ketchup", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Ketchup")
 					$Ketchup/KetchupSprite.position = Vector2(0, 0)
 					$Ketchup/KetchupSprite.rotation = deg_to_rad(0)
 					$OrderTray/KetchupOnSprite.visible = true
@@ -541,6 +551,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Mustard", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Mustard")
 					$Mustard/MustardSprite.position = Vector2(0, 0)
 					$Mustard/MustardSprite.rotation = deg_to_rad(0)
 					$OrderTray/MustardOnSprite.visible = true
@@ -549,42 +560,49 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Relish", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Relish")
 					$OrderTray/RelishOnSprite.visible = true
 					holding_relish = false
 			elif holding_onions:
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Onions", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Onions")
 					$OrderTray/OnionsOnSprite.visible = true
 					holding_onions = false
 			elif holding_jalapenos:
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Jalapeños", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Jalapeños")
 					$OrderTray/JalapenosOnSprite.visible = true
 					holding_jalapenos = false
 			elif holding_shredded_cheese:
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Shredded Cheese", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Shredded Cheese")
 					$OrderTray/ShreddedCheeseOnSprite.visible = true
 					holding_shredded_cheese = false
 			elif holding_nacho_cheese:
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Nacho Cheese", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Nacho Cheese")
 					$OrderTray/NachoCheeseOnSprite.visible = true
 					holding_nacho_cheese = false
 			elif holding_chili:
 				if sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Chili", "topping")
+					Globals.update_daily_ingredients_cost("topping", "Chili")
 					$OrderTray/ChiliOnSprite.visible = true
 					holding_chili = false
 			elif holding_white_bun:
 				if paper_on_tray and not bun_on_paper:
 					Globals.held_item = null
 					Globals.add_to_tray("White Bun", "bun")
+					Globals.update_daily_ingredients_cost("bun", "White Bun")
 					$OrderTray/WhiteBunOnSprite.visible = true
 					$OrderTray/WhiteBunOnSprite.position = Vector2(-55, -18)
 					holding_white_bun = false
@@ -593,6 +611,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if paper_on_tray:
 					Globals.held_item = null
 					Globals.add_to_tray("Whole Wheat Bun", "bun")
+					Globals.update_daily_ingredients_cost("bun", "Whole Wheat Bun")
 					$OrderTray/WheatBunOnSprite.visible = true
 					$OrderTray/WheatBunOnSprite.position = Vector2(-55, -18)
 					holding_wheat_bun = false
@@ -601,6 +620,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if paper_on_tray and not bun_on_paper:
 					Globals.held_item = null
 					Globals.add_to_tray("Gluten Free Bun", "bun")
+					Globals.update_daily_ingredients_cost("bun", "Gluten Free Bun")
 					$OrderTray/GFBunOnSprite.visible = true
 					$OrderTray/GFBunOnSprite.position = Vector2(-55, -18)
 					holding_gf_bun = false
@@ -609,6 +629,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bun_on_paper and not sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Regular Hot Dog", "sausage")
+					Globals.update_daily_ingredients_cost("sausage", "Regular Hot Dog")
 					$OrderTray/HotdogOnSprite.visible = true
 					$OrderTray/HotdogOnSprite.position = Vector2(-55, -18)
 					holding_hotdog = false
@@ -617,6 +638,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bun_on_paper and not sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Veggie Dog", "sausage")
+					Globals.update_daily_ingredients_cost("sausage", "Veggie Dog")
 					$OrderTray/VeggieDogOnSprite.visible = true
 					$OrderTray/VeggieDogOnSprite.position = Vector2(-55, -18)
 					holding_veggie_dog = false
@@ -625,6 +647,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bun_on_paper and not sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Bratwurst", "sausage")
+					Globals.update_daily_ingredients_cost("sausage", "Bratwurst")
 					$OrderTray/BratwurstOnSprite.visible = true
 					$OrderTray/BratwurstOnSprite.position = Vector2(-55, -18)
 					holding_bratwurst = false
@@ -633,6 +656,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bowl_on_tray and not side_in_bowl:
 					Globals.held_item = null
 					Globals.add_to_tray("Potato Chips", "side")
+					Globals.update_daily_ingredients_cost("side", "Potato Chips")
 					$OrderTray/PotatoChipsOnSprite.visible = true
 					holding_potato_chips = false
 					side_in_bowl = true
@@ -640,6 +664,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bowl_on_tray and not side_in_bowl:
 					Globals.held_item = null
 					Globals.add_to_tray("Coleslaw", "side")
+					Globals.update_daily_ingredients_cost("side", "Coleslaw")
 					$OrderTray/ColeslawOnSprite.visible = true
 					holding_coleslaw = false
 					side_in_bowl = true
@@ -647,6 +672,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bowl_on_tray and not side_in_bowl:
 					Globals.held_item = null
 					Globals.add_to_tray("French Fries", "side")
+					Globals.update_daily_ingredients_cost("side", "French Fries")
 					$OrderTray/FriesOnSprite.visible = true
 					holding_french_fries = false
 					side_in_bowl = true
@@ -654,6 +680,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				if bowl_on_tray and not side_in_bowl:
 					Globals.held_item = null
 					Globals.add_to_tray("Mac and Cheese", "side")
+					Globals.update_daily_ingredients_cost("side", "Mac and Cheese")
 					$OrderTray/MacCheeseOnSprite.visible = true
 					holding_mac_cheese = false
 					side_in_bowl = true
@@ -736,6 +763,67 @@ func _on_tray_area_gui_input_event(_viewport, event, _shape_idx):
 		else:
 			$DragTimer.stop()
 
+func _on_drag_timer_timeout():
+	dragging_tray = true
+	$OrderTray.position = get_global_mouse_position()
+	print("Dragging tray")
+
+func check_order(customer):
+	var order_ticket = customer.order_ticket
+	print("Checking order for customer...")
+	print("Order ticket - Sausage:", order_ticket.sausage_type, "Bun:", order_ticket.bun_type, "Toppings:", order_ticket.toppings, "Side:", order_ticket.side)
+	print("Tray contents - Sausage:", Globals.tray_contents["sausage"], "Bun:", Globals.tray_contents["bun"], "Toppings:", Globals.tray_contents["toppings"], "Side:", Globals.tray_contents["side"])
+	var ticket_order = {
+		"sausage": order_ticket.sausage_type,
+		"bun": order_ticket.bun_type,
+		"toppings": order_ticket.toppings,
+		"side": order_ticket.side
+	}
+	var reputation_points = Globals.get_order_reputation(ticket_order)
+	if order_ticket.sausage_type == Globals.tray_contents["sausage"] and order_ticket.bun_type == Globals.tray_contents["bun"] and order_ticket.side == Globals.tray_contents["side"] and array_equals(order_ticket.toppings, Globals.tray_contents["toppings"]):
+		print("Order is correct!")
+		Globals.order_correct = true
+		var order_value = Globals.get_order_value(Globals.tray_contents)
+		Globals.money += order_value
+		Globals.reputation += reputation_points
+		print("+$",order_value)
+		print("Current money: $", Globals.money)
+		print("+", reputation_points)
+		print("Current rep points: ", Globals.reputation)
+		Globals.update_money() #maybe don't update live so to provide update at end of level, but on for testing
+		Globals.update_reputation()
+		Globals.customers_served += 1
+		Globals.daily_sales += order_value
+		Globals.reputation_points_earned += reputation_points
+		# Calculate tips if applicable
+	else:
+		print("Order is incorrect!")
+		Globals.order_correct = false
+		Globals.reputation -= reputation_points
+		Globals.update_reputation()
+		Globals.customers_lost += 1
+		Globals.reputation_points_lost += reputation_points
+		print("-", reputation_points)
+		print("Current rep points: ", Globals.reputation)
+	customer._on_customer_served()
+	Globals.clear_tray()
+	customer.emit_signal("customer_left", customer)
+
+func array_equals(arr1, arr2):
+	if arr1.size() != arr2.size():
+		return false
+	var sorted_arr1 = arr1.duplicate()
+	var sorted_arr2 = arr2.duplicate()   
+	sorted_arr1.sort()
+	sorted_arr2.sort()
+	for i in range(sorted_arr1.size()):
+		if sorted_arr1[i] != sorted_arr2[i]:
+			return false
+	return true
+
+func update_location_to_campus():
+	$Background.texture = background_textures[1]
+
 func _on_garbage_area_input_event(_viewport, _event, _shape_idx):
 	pass #Disabled due to adding ability to put ingredients back
 #	if event is InputEventMouseButton and event.pressed and Globals.held_item:
@@ -788,45 +876,3 @@ func _on_garbage_area_input_event(_viewport, _event, _shape_idx):
 #				holding_french_fries = false
 #			elif holding_mac_cheese:
 #				holding_mac_cheese = false
-
-func _on_drag_timer_timeout():
-	dragging_tray = true
-	$OrderTray.position = get_global_mouse_position()
-	print("Dragging tray")
-
-func check_order(customer):
-	var order_ticket = customer.order_ticket
-	print("Checking order for customer...")
-	print("Order ticket - Sausage:", order_ticket.sausage_type, "Bun:", order_ticket.bun_type, "Toppings:", order_ticket.toppings, "Side:", order_ticket.side)
-	print("Tray contents - Sausage:", Globals.tray_contents["sausage"], "Bun:", Globals.tray_contents["bun"], "Toppings:", Globals.tray_contents["toppings"], "Side:", Globals.tray_contents["side"])
-	if order_ticket.sausage_type == Globals.tray_contents["sausage"] and order_ticket.bun_type == Globals.tray_contents["bun"] and order_ticket.side == Globals.tray_contents["side"] and array_equals(order_ticket.toppings, Globals.tray_contents["toppings"]):
-		print("Order is correct!")
-		Globals.update_reputation(10)
-		var order_value = Globals.get_order_value(Globals.tray_contents)
-		Globals.money += order_value
-		print(order_value)
-		print("Current money: ", Globals.money)
-		Globals.update_money() #maybe don't update live so to provide update at end of level, but on for testing
-	else:
-		print("Order is incorrect!")
-		Globals.update_reputation(-5)
-	Globals.clear_tray()
-	customer.emit_signal("customer_left", customer)
-	_on_customer_left(customer)
-	customer.queue_free()
-	
-func array_equals(arr1, arr2):
-	if arr1.size() != arr2.size():
-		return false
-	var sorted_arr1 = arr1.duplicate()
-	var sorted_arr2 = arr2.duplicate()   
-	sorted_arr1.sort()
-	sorted_arr2.sort()
-	for i in range(sorted_arr1.size()):
-		if sorted_arr1[i] != sorted_arr2[i]:
-			return false
-	return true
-
-func update_location_to_campus():
-	$Background.texture = background_textures[1]
-

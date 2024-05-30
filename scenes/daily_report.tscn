@@ -1,0 +1,141 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfhaeb1non83h"]
+
+[ext_resource type="Script" path="res://scripts/daily_report.gd" id="1_osdtj"]
+
+[node name="DailyReport" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_osdtj")
+
+[node name="ReportBackground" type="Sprite2D" parent="."]
+scale = Vector2(1152.5, 646.5)
+
+[node name="NextDayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1013.0
+offset_top = 585.0
+offset_right = 1141.0
+offset_bottom = 635.0
+theme_override_font_sizes/font_size = 24
+text = "Next Day"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 470.0
+offset_right = 683.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 36
+text = "Daily Report"
+horizontal_alignment = 1
+
+[node name="VBoxContainerCustomers" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 100.0
+offset_right = 697.0
+offset_bottom = 172.0
+alignment = 1
+
+[node name="CustomersServed" type="Label" parent="VBoxContainerCustomers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Customers Served: 0"
+horizontal_alignment = 1
+
+[node name="CustomersLost" type="Label" parent="VBoxContainerCustomers"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Customers Lost: 0"
+horizontal_alignment = 1
+
+[node name="VBoxContainerMoney" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 200.0
+offset_right = 432.0
+offset_bottom = 424.0
+alignment = 1
+
+[node name="Sales" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Sales: $0.00"
+horizontal_alignment = 1
+
+[node name="Tips" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Tips: $0.00"
+horizontal_alignment = 1
+
+[node name="TotalIncome" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Total Income: $0.00"
+horizontal_alignment = 1
+
+[node name="IngredientCost" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Ingredient Costs: $0.00"
+horizontal_alignment = 1
+
+[node name="NewPermitCost" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "New Permit Costs: $0.00"
+horizontal_alignment = 1
+
+[node name="NetProfit" type="Label" parent="VBoxContainerMoney"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Net Profit: $0.00"
+horizontal_alignment = 1
+
+[node name="VBoxContainerRep" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 700.0
+offset_top = 200.0
+offset_right = 1048.0
+offset_bottom = 424.0
+alignment = 1
+
+[node name="ReputationPointsEarned" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Reputation Points Earned: 0"
+horizontal_alignment = 1
+
+[node name="SpeedBonus" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Speed Bonus: 0"
+horizontal_alignment = 1
+
+[node name="ReputationPointsLost" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Reputation Points Lost: 0"
+horizontal_alignment = 1
+
+[node name="NetReputationGain" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Net Reputation Gain: 0"
+horizontal_alignment = 1
+
+[node name="TotalReputation" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Total Reputation: 0"
+horizontal_alignment = 1
+
+[node name="ReputationTier" type="Label" parent="VBoxContainerRep"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Reputation Tier: Bun Beginner"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="NextDayButton" to="." method="_on_next_day_button_pressed"]

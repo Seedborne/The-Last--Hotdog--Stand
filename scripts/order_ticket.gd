@@ -17,10 +17,10 @@ func _show_order_ticket():
 		var topping_label = Label.new()
 		topping_label.text = topping
 		$VBoxContainer/Toppings.add_child(topping_label)
-		if side != "":
-			$VBoxContainer/Side.text = side
-		else:
-			$VBoxContainer/Side.text = ""
+	if side != "":
+		$VBoxContainer/Side.text = side
+	else:
+		$VBoxContainer/Side.text = ""
 	self.visible = true
 	$HideTimer.start()
 	
