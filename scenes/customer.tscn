@@ -21,6 +21,7 @@ one_shot = true
 position = Vector2(315, 287)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-3, -58.5)
 shape = SubResource("RectangleShape2D_nyhxa")
 
@@ -30,6 +31,16 @@ offset_left = 268.0
 offset_top = 179.0
 offset_right = 319.0
 offset_bottom = 202.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+
+[node name="OrderTip" type="Label" parent="."]
+visible = false
+offset_left = 314.0
+offset_top = 146.0
+offset_right = 365.0
+offset_bottom = 180.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24

@@ -12,7 +12,20 @@ var customer_textures = [
 ]
 
 func _ready():
-	$CustomerPatience.wait_time = Globals.park_patience
+	if Globals.current_location == "Community Park":
+		$CustomerPatience.wait_time = Globals.park_patience
+	elif Globals.current_location == "College Campus":
+		$CustomerPatience.wait_time = Globals.campus_patience
+	elif Globals.current_location == "Farmers Market":
+		$CustomerPatience.wait_time = Globals.market_patience
+	elif Globals.current_location == "Beach Boardwalk":
+		$CustomerPatience.wait_time = Globals.boardwalk_patience
+	elif Globals.current_location == "City Plaza":
+		$CustomerPatience.wait_time = Globals.plaza_patience
+	elif Globals.current_location == "Carnival":
+		$CustomerPatience.wait_time = Globals.carnival_patience
+	elif Globals.current_location == "Sports Arena":
+		$CustomerPatience.wait_time = Globals.arena_patience
 	print("Customer waiting for ", $CustomerPatience.wait_time, " seconds")
 	$CustomerPatience.start()
 	$CustomerSprite.set_process_input(true)
@@ -27,6 +40,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 func _on_customer_clicked():
 	Globals.reputation -= 5
 	Globals.update_reputation()
+	Globals.reputation_points_lost += 5
 	$OrderRepTimer.start()
 	set_label_color($OrderReputation, Color(1, 0, 0))
 	$OrderReputation.text = "-5pts"
@@ -42,6 +56,7 @@ func _on_order_rep_timer_timeout():
 func _on_customer_patience_timeout():
 	Globals.customers_lost += 1
 	Globals.reputation -= 10
+	Globals.reputation_points_lost += 10
 	Globals.update_reputation()
 	print("Customer left, -10")
 	print("Current rep points: ", Globals.reputation)
@@ -68,6 +83,7 @@ func _on_customer_served():
 	}
 	var order_value = Globals.get_order_value(Globals.tray_contents)
 	var reputation_points = Globals.get_order_reputation(ticket_order)
+	var tip_amount = Globals.add_tip(order_value)
 	if not Globals.order_correct:
 		set_label_color($OrderReputation, Color(1, 0, 0))
 		$OrderReputation.text = "-" + str(reputation_points) + "pts"
@@ -84,6 +100,9 @@ func _on_customer_served():
 		set_label_color($OrderMoney, Color(0, 1, 0))
 		$OrderMoney.text = "+$" + str("%.2f" % order_value)
 		$OrderMoney.show()
+		set_label_color($OrderTip, Color(0, 1, 0))
+		$OrderTip.text = "+$" + str("%0.2f" % tip_amount) + " tip"
+		$OrderTip.show()
 
 func _on_customer_left_timer_timeout():
 	queue_free()

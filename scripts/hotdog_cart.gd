@@ -48,7 +48,40 @@ func _ready():
 	$CustomerFlow.start()
 	Globals.customers_served = 0
 	Globals.customers_lost = 0
+	$UI/DayTracker.text = "Day: " + str(Globals.current_day)
 	print("Day ", Globals.current_day, " started")
+	if Globals.toppings["Relish"].unlocked:
+		$Relish.text = "Relish"
+	if Globals.toppings["Onions"].unlocked:
+		$Onions.text = "Onions"
+	if Globals.toppings["Jalapeños"].unlocked:
+		$Jalapenos.text = "Jalapeños"
+	if Globals.toppings["Shredded Cheese"].unlocked:
+		$ShreddedCheese.text = "Shredded
+	Cheese"
+	if Globals.toppings["Nacho Cheese"].unlocked:
+		$NachoCheese.text = "Nacho
+	Cheese"
+	if Globals.toppings["Chili"].unlocked:
+		$Chili.text = "Chili"
+	if Globals.buns["Whole Wheat Bun"].unlocked:
+		$WheatBun.text = "Whole Wheat
+	Bun"
+	if Globals.buns["Gluten Free Bun"].unlocked:
+		$GFBun.text = "Gluten Free
+	Bun"
+	if Globals.sausages["Veggie Dog"].unlocked:
+		$VeggieDog.text = "Veggie Dog"
+	if Globals.sausages["Bratwurst"].unlocked:
+		$Bratwurst.text = "Bratwurst"
+	if Globals.sides["Potato Chips"].unlocked:
+		$PotatoChips.text = "Potato Chips"
+	if Globals.sides["Coleslaw"].unlocked:
+		$Coleslaw.text = "Coleslaw"
+	if Globals.sides["French Fries"].unlocked:
+		$FrenchFries.text = "French Fries"
+	if Globals.sides["Mac and Cheese"].unlocked:
+		$MacCheese.text = "Mac & Cheese"
 
 func _process(_delta):
 	$UI/Clock.text = String("%0.2f" % $DayTimer.time_left)
@@ -79,7 +112,6 @@ func _process(_delta):
 func _on_day_timer_timeout():
 	$CustomerFlow.stop()
 	Globals.current_day += 1
-	$UI/DayTracker.text = "Day: " + str(Globals.current_day)
 	get_tree().change_scene_to_file("res://scenes/daily_report.tscn")
 	print("Day finished")
 
@@ -694,6 +726,7 @@ func _on_tray_area_gui_input_event(_viewport, event, _shape_idx):
 			$OrderTray.position = Vector2(566, 375)
 			if $GarbageArea.get_overlapping_areas().has($TrayArea):
 				print("Tray discarded")
+				Globals.clear_tray()
 				$TrayArea.position = Vector2(567, 374)
 				$OrderTray/SideBowl.visible = false
 				$OrderTray/WrapPaper.visible = false
@@ -720,7 +753,6 @@ func _on_tray_area_gui_input_event(_viewport, event, _shape_idx):
 				bun_on_paper = false
 				sausage_on_bun = false
 				side_in_bowl = false
-				# Add logic to clear the tray and discard the order
 			elif not current_customers:
 				print("Invalid drop location")
 				$TrayArea.position = Vector2(567, 374)
@@ -786,11 +818,12 @@ func check_order(customer):
 		var order_value = Globals.get_order_value(Globals.tray_contents)
 		Globals.money += order_value
 		Globals.reputation += reputation_points
+		Globals.add_tip(Globals.get_order_value(Globals.tray_contents))
 		print("+$",order_value)
 		print("Current money: $", Globals.money)
 		print("+", reputation_points)
 		print("Current rep points: ", Globals.reputation)
-		Globals.update_money() #maybe don't update live so to provide update at end of level, but on for testing
+		Globals.update_money()
 		Globals.update_reputation()
 		Globals.customers_served += 1
 		Globals.daily_sales += order_value
