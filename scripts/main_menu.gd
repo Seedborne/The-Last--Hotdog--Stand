@@ -5,6 +5,7 @@ func _on_new_game_pressed():
 	get_tree().change_scene_to_file("res://scenes/opening_scene.tscn")
 
 func _on_load_game_pressed():
+	Globals.load_game()
 	print("Load Game selected")
 
 func _on_settings_pressed():

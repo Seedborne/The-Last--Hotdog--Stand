@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b22vynf8csj43"
-path="res://.godot/imported/nachocheese.png-baa22ae510f29dae622bc69a5aed80e3.ctex"
+uid="uid://ofyliwpg3abu"
+path="res://.godot/imported/relish.png-e2fa993a404bd0b0dcdcf783c7e98278.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/nachocheese.png"
-dest_files=["res://.godot/imported/nachocheese.png-baa22ae510f29dae622bc69a5aed80e3.ctex"]
+source_file="res://assets/ingredients/relish.png"
+dest_files=["res://.godot/imported/relish.png-e2fa993a404bd0b0dcdcf783c7e98278.ctex"]
 
 [params]
 

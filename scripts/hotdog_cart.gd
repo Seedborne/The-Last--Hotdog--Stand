@@ -1,7 +1,7 @@
 extends Node2D
 
 var customer_positions = [Vector2(-30, 10), Vector2(350, 10), Vector2(730, 10)]
-var order_ticket_positions = [Vector2(40, 30), Vector2(420, 30), Vector2(800, 30)]
+var order_ticket_positions = [Vector2(80, 30), Vector2(460, 30), Vector2(840, 30)]
 var current_customers = []
 
 var dragging_tray = false
@@ -34,6 +34,10 @@ var side_in_bowl = false
 
 var background_textures = [
 	preload("res://assets/backgrounds/communitypark.png"),
+	preload("res://assets/backgrounds/collegecampus.png"),
+	preload("res://assets/backgrounds/communitypark.png"),
+	preload("res://assets/backgrounds/communitypark.png"),
+	preload("res://assets/backgrounds/communitypark.png"),
 	preload("res://assets/backgrounds/communitypark.png"),
 	preload("res://assets/backgrounds/communitypark.png"),
 ]
@@ -45,11 +49,44 @@ func _ready():
 	Globals.update_money()
 	Globals.update_reputation()
 	$DayTimer.start()
+	Globals.current_day += 1
+	if Globals.current_location == "Community Park":
+		$CustomerFlow.wait_time = 15
+	elif Globals.current_location == "College Campus":
+		$CustomerFlow.wait_time = 12
+	elif Globals.current_location == "Farmers Market":
+		$CustomerFlow.wait_time = 10
+	elif Globals.current_location == "Beach Boardwalk":
+		$CustomerFlow.wait_time = 8
+	elif Globals.current_location == "City Plaza":
+		$CustomerFlow.wait_time = 7
+	elif Globals.current_location == "Carnival":
+		$CustomerFlow.wait_time = 6
+	elif Globals.current_location == "Sports Arena":
+		$CustomerFlow.wait_time = 5
+	print("Customers arriving every ", $CustomerFlow.wait_time, " seconds")
 	$CustomerFlow.start()
+	
+	if Globals.current_location == "Community Park":
+		$Background.texture = background_textures[0]
+	elif Globals.current_location == "College Campus":
+		$Background.texture = background_textures[1]
+	elif Globals.current_location == "Farmers Market":
+		$Background.texture = background_textures[2]
+	elif Globals.current_location == "Beach Boardwalk":
+		$Background.texture = background_textures[3]
+	elif Globals.current_location == "City Plaza":
+		$Background.texture = background_textures[4]
+	elif Globals.current_location == "Carnival":
+		$Background.texture = background_textures[5]
+	elif Globals.current_location == "Sports Arena":
+		$Background.texture = background_textures[6]
+
 	Globals.customers_served = 0
 	Globals.customers_lost = 0
 	$UI/DayTracker.text = "Day: " + str(Globals.current_day)
 	print("Day ", Globals.current_day, " started")
+	print("Current location: ", Globals.current_location)
 	if Globals.toppings["Relish"].unlocked:
 		$Relish.text = "Relish"
 	if Globals.toppings["Onions"].unlocked:
@@ -82,7 +119,16 @@ func _ready():
 		$FrenchFries.text = "French Fries"
 	if Globals.sides["Mac and Cheese"].unlocked:
 		$MacCheese.text = "Mac & Cheese"
-
+	
+	if Globals.tutorial_complete:
+		$Tutorial.hide()
+	elif not Globals.tutorial1:
+		$Tutorial.text = "Click on stack of napkins
+		to pick one up"
+		$Tutorial.position = Vector2(128, 260)
+		$Tutorial.size = Vector2(194, 53)
+		$Tutorial.show()
+	
 func _process(_delta):
 	$UI/Clock.text = String("%0.2f" % $DayTimer.time_left)
 	if dragging_tray:
@@ -111,7 +157,6 @@ func _process(_delta):
 
 func _on_day_timer_timeout():
 	$CustomerFlow.stop()
-	Globals.current_day += 1
 	get_tree().change_scene_to_file("res://scenes/daily_report.tscn")
 	print("Day finished")
 
@@ -142,6 +187,17 @@ func _create_order():
 func _on_customer_flow_timeout():
 	_create_order()
 	print("Order created")
+	if not Globals.tutorial7 and not Globals.tutorial_complete:
+		Globals.tutorial7 = true
+		$Tutorial2.text = "Assemble hotdog according to the customer's order. 
+If needed you can click on the customer to have them
+tell you their order again, but this will annoy them
+slightly and you will lose 5 reputation."
+		$Tutorial2.position = Vector2(720, 40)
+		$Tutorial2.size = Vector2(418, 105)
+		$Tutorial2.show()
+	elif Globals.tutorial12 and not Globals.tutorial_complete:
+		$Tutorial.hide()
 
 func _on_order_requested(order_ticket):
 	order_ticket._show_order_ticket()
@@ -208,12 +264,30 @@ func _on_ketchup_pressed():
 		holding_ketchup = true
 		$Ketchup/KetchupSprite.position = get_global_mouse_position() + Vector2(-780, -336)
 		$Ketchup/KetchupSprite.rotation = deg_to_rad(45)
+		if not Globals.tutorial8 and not Globals.tutorial_complete:
+			Globals.tutorial8 = true
+			$Tutorial.text = "Depending on the order requirements,
+you can either put ketchup on the
+hotdog, or click on the spot where
+the ketchup goes to put it back."
+			$Tutorial.position = Vector2(688, 152)
+			$Tutorial.size = Vector2(303, 105)
 	elif "Ketchup" in Globals.held_item:
 		print("Put ketchup back")
 		holding_ketchup = false
 		Globals.held_item = null
 		$Ketchup/KetchupSprite.position = Vector2(0, 0)
 		$Ketchup/KetchupSprite.rotation = deg_to_rad(0)
+		if not Globals.tutorial9 and not Globals.tutorial_complete:
+			Globals.tutorial9 = true
+			$Tutorial.text = "After assembling an order accurately, drag
+the tray to the customer to serve them.
+If you've made a mistake, you can drag the
+tray to the garbage to discard it and start over. 
+
+Be careful though, ingredients aren't free!"
+			$Tutorial.position = Vector2(784, 160)
+			$Tutorial.size = Vector2(365, 157)
 	else:
 		print("Hands already full with ", Globals.held_item)
 
@@ -244,12 +318,27 @@ func _on_relish_pressed():
 		print("Put relish back")
 		holding_relish = false
 		Globals.held_item = null
+		if not Globals.tutorial12 and not Globals.tutorial_complete:
+			Globals.tutorial12 = true
+			$Tutorial.text = "Great job! 
+That's all you need to know for now,
+good luck with the next customer!"
+			$Tutorial.position = Vector2(422, 224)
+			$Tutorial.size = Vector2(283, 79)
 	else:
 		print("Hands already full with ", Globals.held_item)
 		
 func _on_relish_unlock_pressed():
 	unlock_ingredient("topping", "Relish")
 	$Relish/RelishUnlock.hide()
+	if not Globals.tutorial11 and not Globals.tutorial_complete:
+		Globals.tutorial11 = true
+		$Tutorial.text = "Similarly to the ketchup, if you pick
+up relish or any other ingredient by
+mistake, you can simply click it
+again to put it back. Try it!"
+		$Tutorial.position = Vector2(430, 200)
+		$Tutorial.size = Vector2(278, 105)
 
 func _on_onions_pressed():
 	if not Globals.toppings["Onions"].unlocked:
@@ -348,6 +437,11 @@ func _on_white_bun_pressed():
 		holding_white_bun = true
 		$OrderTray/WhiteBunOnSprite.position = get_global_mouse_position() + Vector2(-566, -375)
 		$OrderTray/WhiteBunOnSprite.visible = true
+		if not Globals.tutorial3 and not Globals.tutorial_complete:
+			Globals.tutorial3 = true
+			$Tutorial.text = "Place bun on napkin"
+			$Tutorial.position = Vector2(496, 280)
+			$Tutorial.size = Vector2(161, 27)
 	elif Globals.held_item == "White Bun":
 		print("Put white bun back")
 		holding_white_bun = false
@@ -405,6 +499,11 @@ func _on_hotdog_pressed():
 		holding_hotdog = true
 		$OrderTray/HotdogOnSprite.position = get_global_mouse_position() + Vector2(-566, -375)
 		$OrderTray/HotdogOnSprite.visible = true
+		if not Globals.tutorial5 and not Globals.tutorial_complete:
+			Globals.tutorial5 = true
+			$Tutorial.text = "Place hotdog on bun"
+			$Tutorial.position = Vector2(496, 288)
+			$Tutorial.size = Vector2(163, 27)
 	elif Globals.held_item == "Hotdog":
 		print("Put hotdog back")
 		holding_hotdog = false
@@ -549,6 +648,11 @@ func _on_wrap_papers_pressed():
 		$OrderTray/WrapPaper.position = get_global_mouse_position() + Vector2(-566, -375)
 		$OrderTray/WrapPaper.visible = true
 		holding_paper = true
+		if not Globals.tutorial1 and not Globals.tutorial_complete:
+			Globals.tutorial1 = true
+			$Tutorial.text = "Click on tray while holding napkin to place it"
+			$Tutorial.position = Vector2(392, 280)
+			$Tutorial.size = Vector2(345, 27)
 	elif Globals.held_item == "papers":
 		$OrderTray/WrapPaper.visible = false
 		print("Put paper back")
@@ -570,6 +674,12 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 				$OrderTray/WrapPaper.position = Vector2(-50, 0)
 				holding_paper = false
 				paper_on_tray = true
+				if not Globals.tutorial2 and not Globals.tutorial_complete:
+					Globals.tutorial2 = true
+					$Tutorial.text = "Click to pick
+					up a bun"
+					$Tutorial.position = Vector2(32, 416)
+					$Tutorial.size = Vector2(97, 53)
 			elif holding_ketchup:
 				if sausage_on_bun:
 					Globals.held_item = null
@@ -579,6 +689,16 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 					$Ketchup/KetchupSprite.rotation = deg_to_rad(0)
 					$OrderTray/KetchupOnSprite.visible = true
 					holding_ketchup = false
+					if not Globals.tutorial9 and not Globals.tutorial_complete:
+						Globals.tutorial9 = true
+						$Tutorial.text = "After assembling an order accurately, drag
+the tray to the customer to serve them.
+If you've made a mistake, you  can drag the
+tray to the garbage to discard it and start over. 
+
+Be careful though, ingredients aren't free!"
+						$Tutorial.position = Vector2(784, 160)
+						$Tutorial.size = Vector2(365, 157)
 			elif holding_mustard:
 				if sausage_on_bun:
 					Globals.held_item = null
@@ -636,16 +756,21 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 					Globals.add_to_tray("White Bun", "bun")
 					Globals.update_daily_ingredients_cost("bun", "White Bun")
 					$OrderTray/WhiteBunOnSprite.visible = true
-					$OrderTray/WhiteBunOnSprite.position = Vector2(-55, -18)
+					$OrderTray/WhiteBunOnSprite.position = Vector2(-50, -18)
 					holding_white_bun = false
 					bun_on_paper = true
+					if not Globals.tutorial4 and not Globals.tutorial_complete:
+						Globals.tutorial4 = true
+						$Tutorial.text = "Pick up hotdog"
+						$Tutorial.position = Vector2(21, 540)
+						$Tutorial.size = Vector2(119, 27)
 			elif holding_wheat_bun and not bun_on_paper:
 				if paper_on_tray:
 					Globals.held_item = null
 					Globals.add_to_tray("Whole Wheat Bun", "bun")
 					Globals.update_daily_ingredients_cost("bun", "Whole Wheat Bun")
 					$OrderTray/WheatBunOnSprite.visible = true
-					$OrderTray/WheatBunOnSprite.position = Vector2(-55, -18)
+					$OrderTray/WheatBunOnSprite.position = Vector2(-50, -18)
 					holding_wheat_bun = false
 					bun_on_paper = true
 			elif holding_gf_bun:
@@ -654,7 +779,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 					Globals.add_to_tray("Gluten Free Bun", "bun")
 					Globals.update_daily_ingredients_cost("bun", "Gluten Free Bun")
 					$OrderTray/GFBunOnSprite.visible = true
-					$OrderTray/GFBunOnSprite.position = Vector2(-55, -18)
+					$OrderTray/GFBunOnSprite.position = Vector2(-50, -18)
 					holding_gf_bun = false
 					bun_on_paper = true
 			elif holding_hotdog:
@@ -663,16 +788,21 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 					Globals.add_to_tray("Regular Hot Dog", "sausage")
 					Globals.update_daily_ingredients_cost("sausage", "Regular Hot Dog")
 					$OrderTray/HotdogOnSprite.visible = true
-					$OrderTray/HotdogOnSprite.position = Vector2(-55, -18)
+					$OrderTray/HotdogOnSprite.position = Vector2(-50, -18)
 					holding_hotdog = false
 					sausage_on_bun = true
+					if not Globals.tutorial6 and not Globals.tutorial_complete:
+						Globals.tutorial6 = true
+						$Tutorial.text = "Pick up ketchup bottle"
+						$Tutorial.position = Vector2(752, 200)
+						$Tutorial.size = Vector2(177, 27)
 			elif holding_veggie_dog:
 				if bun_on_paper and not sausage_on_bun:
 					Globals.held_item = null
 					Globals.add_to_tray("Veggie Dog", "sausage")
 					Globals.update_daily_ingredients_cost("sausage", "Veggie Dog")
 					$OrderTray/VeggieDogOnSprite.visible = true
-					$OrderTray/VeggieDogOnSprite.position = Vector2(-55, -18)
+					$OrderTray/VeggieDogOnSprite.position = Vector2(-50, -18)
 					holding_veggie_dog = false
 					sausage_on_bun = true
 			elif holding_bratwurst:
@@ -681,7 +811,7 @@ func _on_tray_area_input_event(_viewport, event, _shape_idx):
 					Globals.add_to_tray("Bratwurst", "sausage")
 					Globals.update_daily_ingredients_cost("sausage", "Bratwurst")
 					$OrderTray/BratwurstOnSprite.visible = true
-					$OrderTray/BratwurstOnSprite.position = Vector2(-55, -18)
+					$OrderTray/BratwurstOnSprite.position = Vector2(-50, -18)
 					holding_bratwurst = false
 					sausage_on_bun = true
 			elif holding_potato_chips:
@@ -787,7 +917,15 @@ func _on_tray_area_gui_input_event(_viewport, event, _shape_idx):
 						bun_on_paper = false
 						sausage_on_bun = false
 						side_in_bowl = false
-						# Add logic to serve the order to the customer
+						if not Globals.tutorial10 and not Globals.tutorial_complete:
+							Globals.tutorial10 = true
+							$Tutorial.text = "Click on a locked ingredient to reveal its unlock cost.
+If you can afford to unlock the ingredient, click again
+to unlock it. Otherwise click again to re-hide the cost.
+				Unlock the relish."
+							$Tutorial.position = Vector2(368, 194)
+							$Tutorial.size = Vector2(414, 105)
+							$Tutorial2.hide()
 						break
 					else:
 						print("Invalid drop location")
@@ -816,19 +954,21 @@ func check_order(customer):
 		print("Order is correct!")
 		Globals.order_correct = true
 		var order_value = Globals.get_order_value(Globals.tray_contents)
+		var speed_bonus = customer.get_speed_bonus()
 		Globals.money += order_value
 		Globals.reputation += reputation_points
+		Globals.reputation += speed_bonus
 		Globals.add_tip(Globals.get_order_value(Globals.tray_contents))
-		print("+$",order_value)
 		print("Current money: $", Globals.money)
 		print("+", reputation_points)
+		print("+", speed_bonus, " speed bonus")
 		print("Current rep points: ", Globals.reputation)
 		Globals.update_money()
 		Globals.update_reputation()
 		Globals.customers_served += 1
 		Globals.daily_sales += order_value
 		Globals.reputation_points_earned += reputation_points
-		# Calculate tips if applicable
+		Globals.speed_bonus_earned += speed_bonus
 	else:
 		print("Order is incorrect!")
 		Globals.order_correct = false

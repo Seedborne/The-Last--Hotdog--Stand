@@ -16,6 +16,7 @@ func _show_order_ticket():
 	for topping in toppings:
 		var topping_label = Label.new()
 		topping_label.text = topping
+		topping_label.add_theme_color_override("font_color", Color(0, 0, 0))
 		$VBoxContainer/Toppings.add_child(topping_label)
 	if side != "":
 		$VBoxContainer/Side.text = side

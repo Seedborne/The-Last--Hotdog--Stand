@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b22vynf8csj43"
-path="res://.godot/imported/nachocheese.png-baa22ae510f29dae622bc69a5aed80e3.ctex"
+uid="uid://c1d6okr3vkf5v"
+path="res://.godot/imported/collegecampus.png-da016c29935e9ac3eb2a9eceb14e364a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ingredients/nachocheese.png"
-dest_files=["res://.godot/imported/nachocheese.png-baa22ae510f29dae622bc69a5aed80e3.ctex"]
+source_file="res://assets/backgrounds/collegecampus.png"
+dest_files=["res://.godot/imported/collegecampus.png-da016c29935e9ac3eb2a9eceb14e364a.ctex"]
 
 [params]
 

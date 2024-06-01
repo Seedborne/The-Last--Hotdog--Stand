@@ -43,8 +43,7 @@ func _on_customer_clicked():
 	Globals.reputation_points_lost += 5
 	$OrderRepTimer.start()
 	set_label_color($OrderReputation, Color(1, 0, 0))
-	$OrderReputation.text = "-5pts"
-	$OrderReputation.position = Vector2(350, 140)
+	$OrderReputation.text = "-5 Rep"
 	$OrderReputation.show()
 	print("Showing order again, -5")
 	print("Current rep points: ", Globals.reputation)
@@ -65,7 +64,6 @@ func _on_customer_patience_timeout():
 	$CustomerLeft.show()
 	set_label_color($OrderReputation, Color(1, 0, 0))
 	$OrderReputation.text = "-10pts"
-	$OrderReputation.position = Vector2(328, 209)
 	$OrderReputation.show()
 	$CustomerLeftTimer.start()
 	emit_signal("customer_left", self)
@@ -83,19 +81,18 @@ func _on_customer_served():
 	}
 	var order_value = Globals.get_order_value(Globals.tray_contents)
 	var reputation_points = Globals.get_order_reputation(ticket_order)
-	var tip_amount = Globals.add_tip(order_value)
+	var speed_bonus = Globals.current_speed_bonus
 	if not Globals.order_correct:
 		set_label_color($OrderReputation, Color(1, 0, 0))
-		$OrderReputation.text = "-" + str(reputation_points) + "pts"
-		$OrderReputation.position = Vector2(328, 209)
+		$OrderReputation.text = "-" + str(reputation_points) + " Rep"
 		$OrderReputation.show()
 		set_label_color($OrderMoney, Color(1, 0, 0))
 		$OrderMoney.text = "+$0.00"
 		$OrderMoney.show()
 	if Globals.order_correct:
+		var tip_amount = Globals.add_tip(order_value)
 		set_label_color($OrderReputation, Color(0, 1, 0))
-		$OrderReputation.text = "+" + str(reputation_points) + "pts"
-		$OrderReputation.position = Vector2(328, 209)
+		$OrderReputation.text = "+" + str(reputation_points) + " Rep"
 		$OrderReputation.show()
 		set_label_color($OrderMoney, Color(0, 1, 0))
 		$OrderMoney.text = "+$" + str("%.2f" % order_value)
@@ -103,6 +100,9 @@ func _on_customer_served():
 		set_label_color($OrderTip, Color(0, 1, 0))
 		$OrderTip.text = "+$" + str("%0.2f" % tip_amount) + " tip"
 		$OrderTip.show()
+		set_label_color($OrderSpeedBonus, Color(0, 1, 0))
+		$OrderSpeedBonus.text = "+" + str(speed_bonus) + " bonus"
+		$OrderSpeedBonus.show()
 
 func _on_customer_left_timer_timeout():
 	queue_free()
@@ -115,3 +115,15 @@ func set_label_color(label: Label, color: Color):
 func _on_customer_served_timer_timeout():
 	queue_free()
 
+func get_speed_bonus() -> int:
+	var remaining_time = $CustomerPatience.time_left
+	var total_time = $CustomerPatience.wait_time
+	if remaining_time >= total_time / 2:
+		Globals.current_speed_bonus = 10
+		return 10
+	elif remaining_time >= total_time / 4:
+		Globals.current_speed_bonus = 4
+		return 4
+	else:
+		Globals.current_speed_bonus = 0
+		return 0

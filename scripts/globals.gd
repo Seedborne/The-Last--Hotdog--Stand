@@ -4,7 +4,7 @@ var money = 50.00
 var reputation = 0
 
 var current_location = "Community Park"
-var current_day = 1
+var current_day = 0
 var customers_served = 0
 var customers_lost = 0
 var daily_sales = 0.0
@@ -16,8 +16,25 @@ var speed_bonus_earned = 0
 var reputation_points_lost = 0
 var reputation_tier = "Bun Beginner"
 
+var tutorial1 = false
+var tutorial2 = false
+var tutorial3 = false
+var tutorial4 = false
+var tutorial5 = false
+var tutorial6 = false
+var tutorial7 = false
+var tutorial8 = false
+var tutorial9 = false
+var tutorial10 = false
+var tutorial11 = false
+var tutorial12 = false
+var tutorial13 = false
+var tutorial14 = false
+var tutorial_complete = false
+
 var held_item = null
 var order_correct = false
+var current_speed_bonus = 0
 
 var tray_contents = {
 	"bun": "",
@@ -57,12 +74,19 @@ var sides = {
 }
 
 var park_patience = 18.0
-var campus_patience = 15.0
-var market_patience = 15.0
-var boardwalk_patience = 14.0
-var plaza_patience = 12.0
-var carnival_patience = 12.0
-var arena_patience = 10.0
+var campus_patience = 18.0
+var market_patience = 16.0
+var boardwalk_patience = 16.0
+var plaza_patience = 14.0
+var carnival_patience = 14.0
+var arena_patience = 12.0
+
+var unlocked_campus = false
+var unlocked_market = false
+var unlocked_boardwalk = false
+var unlocked_plaza = false
+var unlocked_carnival = false
+var unlocked_arena = false
 
 func update_money():
 	var money_display = get_node("/root/HotdogCart/UI/MoneyDisplay")
@@ -258,9 +282,63 @@ func add_tip(order: float) -> float:
 	elif current_location == "Carnival":
 		tip = order * 0.6
 	elif current_location == "Sports Arena":
-		tip = order * 0.7
+		tip = order * 0.8
 	Globals.money += tip
 	update_money()
 	daily_tips += tip
 	print("Tip added: $" + String("%0.2f" % tip))
 	return tip
+
+func save_game():
+	var save_data = {
+		"money": money,
+		"reputation": reputation,
+		"current_location": current_location,
+		"current_day": current_day,
+		"tutorial_complete": tutorial_complete,
+		"unlocked_ingredients": {
+			"sausages": sausages,
+			"buns": buns,
+			"toppings": toppings,
+			"sides": sides
+		},
+		"unlocked_locations": {
+			"campus": unlocked_campus,
+			"market": unlocked_market,
+			"boardwalk": unlocked_boardwalk,
+			"plaza": unlocked_plaza,
+			"carnival": unlocked_carnival,
+			"arena": unlocked_arena
+		}
+	}
+	var file = FileAccess.open("user://save_game.dat", FileAccess.WRITE)
+	file.store_var(save_data)
+	file.close()
+	print("Game saved")
+
+func load_game():
+	var save_data = {}
+	if FileAccess.file_exists("user://save_game.dat"):
+		var file = FileAccess.open("user://save_game.dat", FileAccess.READ)
+		save_data = file.get_var()
+		file.close()
+
+		money = save_data.money
+		reputation = save_data.reputation
+		current_location = save_data.current_location
+		current_day = save_data.current_day
+		tutorial_complete = save_data.tutorial_complete
+		sausages = save_data.unlocked_ingredients.sausages
+		buns = save_data.unlocked_ingredients.buns
+		toppings = save_data.unlocked_ingredients.toppings
+		sides = save_data.unlocked_ingredients.sides
+		unlocked_campus = save_data.unlocked_locations.campus
+		unlocked_market = save_data.unlocked_locations.market
+		unlocked_boardwalk = save_data.unlocked_locations.boardwalk
+		unlocked_plaza = save_data.unlocked_locations.plaza
+		unlocked_carnival = save_data.unlocked_locations.carnival
+		unlocked_arena = save_data.unlocked_locations.arena
+		get_tree().change_scene_to_file("res://scenes/hotdog_cart.tscn")
+		print("Game loaded")
+	else:
+		print("Failed to load game")

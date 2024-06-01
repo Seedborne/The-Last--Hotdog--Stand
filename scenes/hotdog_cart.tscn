@@ -1,26 +1,26 @@
-[gd_scene load_steps=45 format=3 uid="uid://d1tnxs0a7jws"]
+[gd_scene load_steps=46 format=3 uid="uid://d1tnxs0a7jws"]
 
 [ext_resource type="Script" path="res://scripts/hotdog_cart.gd" id="1_iuwld"]
 [ext_resource type="Texture2D" uid="uid://b4fwovhoop2nd" path="res://assets/hotdogcart.png" id="2_ehlfu"]
-[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="3_3ptto"]
 [ext_resource type="Texture2D" uid="uid://d1qaao5oiit8" path="res://assets/ketchupbottle.png" id="3_gogtt"]
 [ext_resource type="Texture2D" uid="uid://k2p08t2s087h" path="res://assets/mustardbottle.png" id="4_bq38m"]
 [ext_resource type="Texture2D" uid="uid://dtri4igk5luqg" path="res://assets/ordertray.png" id="5_wriet"]
 [ext_resource type="Texture2D" uid="uid://5p60eocyqe8k" path="res://assets/sidebowl.png" id="7_mxsiy"]
 [ext_resource type="Texture2D" uid="uid://djs4207emlg2y" path="res://assets/wrappaper.png" id="8_2dmvp"]
-[ext_resource type="Texture2D" uid="uid://dfjgb66hdjiqw" path="res://assets/ingredients/hotdog.png" id="9_8gx02"]
-[ext_resource type="Texture2D" uid="uid://cke5q3n5lllyy" path="res://assets/ingredients/veggiedog.png" id="10_2h10a"]
-[ext_resource type="Texture2D" uid="uid://c0v8m0wlls8gy" path="res://assets/ingredients/whitebun.png" id="10_mh4m5"]
-[ext_resource type="Texture2D" uid="uid://crah23g5fuwem" path="res://assets/ingredients/bratwurst.png" id="11_eeo64"]
-[ext_resource type="Texture2D" uid="uid://bbgbqybredvd8" path="res://assets/ingredients/wheatbun.png" id="13_bioql"]
-[ext_resource type="Texture2D" uid="uid://dxkwu0gcgxhuu" path="res://assets/ingredients/gfbun.png" id="14_f4f4n"]
-[ext_resource type="Texture2D" uid="uid://bbbkw48jd87q1" path="res://assets/ingredients/ketchup.png" id="15_23xac"]
-[ext_resource type="Texture2D" uid="uid://ckadtdsrjf2ys" path="res://assets/ingredients/mustard.png" id="16_8wvvv"]
-[ext_resource type="Texture2D" uid="uid://ds1ss8cr4ll2y" path="res://assets/ingredients/onions.png" id="17_pexc3"]
-[ext_resource type="Texture2D" uid="uid://yuijgmuhpnm8" path="res://assets/ingredients/jalapenos.png" id="18_vr31p"]
-[ext_resource type="Texture2D" uid="uid://cwfc6au1v7e6x" path="res://assets/ingredients/shreddedcheese.png" id="19_jxkmq"]
-[ext_resource type="Texture2D" uid="uid://by80200tsaw0h" path="res://assets/ingredients/nachocheese.png" id="20_gykon"]
-[ext_resource type="Texture2D" uid="uid://dp1q1j4a7qhv5" path="res://assets/ingredients/chili.png" id="21_cyxug"]
+[ext_resource type="Texture2D" uid="uid://pruqncqec3oo" path="res://assets/ingredients/hotdog.png" id="9_8gx02"]
+[ext_resource type="Texture2D" uid="uid://bb1xygh601qya" path="res://assets/ingredients/veggiedog.png" id="10_2h10a"]
+[ext_resource type="Texture2D" uid="uid://c0b4603qyg88c" path="res://assets/ingredients/whitebun.png" id="10_mh4m5"]
+[ext_resource type="Texture2D" uid="uid://d17u20c8uyq3s" path="res://assets/ingredients/bratwurst.png" id="11_eeo64"]
+[ext_resource type="Texture2D" uid="uid://bivsbhjnl7qap" path="res://assets/ingredients/wheatbun.png" id="13_bioql"]
+[ext_resource type="Texture2D" uid="uid://cetpbpjyw4pgh" path="res://assets/ingredients/gfbun.png" id="14_f4f4n"]
+[ext_resource type="Texture2D" uid="uid://bfj5gffc8ccsu" path="res://assets/ingredients/ketchup.png" id="15_23xac"]
+[ext_resource type="Texture2D" uid="uid://dhdpm067b3crw" path="res://assets/ingredients/mustard.png" id="16_8wvvv"]
+[ext_resource type="Texture2D" uid="uid://dhfv5t414qbmt" path="res://assets/ingredients/onions.png" id="17_pexc3"]
+[ext_resource type="Texture2D" uid="uid://ofyliwpg3abu" path="res://assets/ingredients/relish.png" id="18_agjjd"]
+[ext_resource type="Texture2D" uid="uid://clwsxjsskn2j5" path="res://assets/ingredients/jalapenos.png" id="18_vr31p"]
+[ext_resource type="Texture2D" uid="uid://cd6gqlm7iymn4" path="res://assets/ingredients/shreddedcheese.png" id="19_jxkmq"]
+[ext_resource type="Texture2D" uid="uid://b22vynf8csj43" path="res://assets/ingredients/nachocheese.png" id="20_gykon"]
+[ext_resource type="Texture2D" uid="uid://y4whfjdh8swv" path="res://assets/ingredients/chili.png" id="21_cyxug"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgfqr"]
 
@@ -71,6 +71,20 @@ size = Vector2(288, 94)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i53gi"]
 size = Vector2(169.5, 89.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ohva"]
+bg_color = Color(0.933333, 0.921569, 0.886275, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
 [node name="HotdogCart" type="Node2D"]
 script = ExtResource("1_iuwld")
 
@@ -80,7 +94,7 @@ texture = ExtResource("2_ehlfu")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
-texture = ExtResource("3_3ptto")
+scale = Vector2(0.422, 0.422)
 centered = false
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -96,6 +110,8 @@ offset_left = 288.0
 offset_right = 418.0
 offset_bottom = 23.0
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Money: $0.00"
 horizontal_alignment = 1
 
@@ -103,6 +119,8 @@ horizontal_alignment = 1
 offset_left = 736.0
 offset_right = 893.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Reputation: 0"
 horizontal_alignment = 1
 
@@ -110,6 +128,8 @@ horizontal_alignment = 1
 offset_left = 976.0
 offset_right = 1149.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "Bun Beginner"
 horizontal_alignment = 1
 
@@ -117,6 +137,8 @@ horizontal_alignment = 1
 offset_left = 552.0
 offset_right = 592.0
 offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
 text = "0:00"
 horizontal_alignment = 1
 
@@ -124,7 +146,9 @@ horizontal_alignment = 1
 offset_left = 112.0
 offset_right = 155.0
 offset_bottom = 23.0
-text = "Day: 1"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Day: 0"
 horizontal_alignment = 1
 
 [node name="DayTimer" type="Timer" parent="."]
@@ -132,7 +156,6 @@ wait_time = 120.0
 one_shot = true
 
 [node name="CustomerFlow" type="Timer" parent="."]
-wait_time = 10.0
 
 [node name="Ketchup" type="Button" parent="."]
 offset_left = 820.0
@@ -464,89 +487,89 @@ visible = false
 position = Vector2(-370, -5)
 texture = ExtResource("8_2dmvp")
 
-[node name="HotdogOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("9_8gx02")
-
-[node name="VeggieDogOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_2h10a")
-
-[node name="BratwurstOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("11_eeo64")
-
-[node name="WhiteBunOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("10_mh4m5")
-
-[node name="WheatBunOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("13_bioql")
-
 [node name="GFBunOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("14_f4f4n")
 
-[node name="KetchupOnSprite" type="Sprite2D" parent="OrderTray"]
+[node name="WheatBunOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("15_23xac")
+texture = ExtResource("13_bioql")
 
-[node name="MustardOnSprite" type="Sprite2D" parent="OrderTray"]
+[node name="WhiteBunOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("16_8wvvv")
+texture = ExtResource("10_mh4m5")
 
-[node name="RelishOnSprite" type="Sprite2D" parent="OrderTray"]
+[node name="BratwurstOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("17_pexc3")
+texture = ExtResource("11_eeo64")
 
-[node name="OnionsOnSprite" type="Sprite2D" parent="OrderTray"]
+[node name="VeggieDogOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("17_pexc3")
+texture = ExtResource("10_2h10a")
 
-[node name="JalapenosOnSprite" type="Sprite2D" parent="OrderTray"]
+[node name="HotdogOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("18_vr31p")
-
-[node name="ShreddedCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
-visible = false
-position = Vector2(-55, -18)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("19_jxkmq")
+texture = ExtResource("9_8gx02")
 
 [node name="NachoCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("20_gykon")
 
 [node name="ChiliOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
-position = Vector2(-55, -18)
+position = Vector2(-50, -18)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("21_cyxug")
+
+[node name="KetchupOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("15_23xac")
+
+[node name="MustardOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("16_8wvvv")
+
+[node name="RelishOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("18_agjjd")
+
+[node name="OnionsOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_pexc3")
+
+[node name="JalapenosOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("18_vr31p")
+
+[node name="ShreddedCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
+visible = false
+position = Vector2(-50, -18)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("19_jxkmq")
 
 [node name="PotatoChipsOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
@@ -583,6 +606,29 @@ one_shot = true
 [node name="CustomerServedTimer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="Tutorial" type="Label" parent="."]
+z_index = 2
+offset_left = 128.0
+offset_top = 260.0
+offset_right = 193.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ohva")
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="Tutorial2" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = 128.0
+offset_top = 260.0
+offset_right = 193.0
+offset_bottom = 287.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ohva")
+text = "Tutorial"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]

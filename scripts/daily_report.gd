@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	$VBoxContainerCustomers/CurrentDay.text = "Day: " + str(Globals.current_day)
 	$VBoxContainerCustomers/CustomersServed.text = "Customers Served: " + str(Globals.customers_served)
 	$VBoxContainerCustomers/CustomersLost.text = "Customers Lost: " + str(Globals.customers_lost)
 	$VBoxContainerMoney/Sales.text = "Sales: $" + String("%0.2f" % Globals.daily_sales)
@@ -15,7 +16,26 @@ func _ready():
 	$VBoxContainerRep/NetReputationGain.text = "Net Reputation Gain: " + str(Globals.get_net_reputation_gain())
 	$VBoxContainerRep/TotalReputation.text = "Total Reputation Points: " + str(Globals.reputation)
 	$VBoxContainerRep/ReputationTier.text = "Reputation Tier: " + str(Globals.reputation_tier)
+	if not Globals.tutorial13 and not Globals.tutorial_complete:
+		$ReportBackground/Tutorial.show()
+	if Globals.tutorial14 and not Globals.tutorial_complete:
+		$ReportBackground/TutorialComplete.show()
+		Globals.tutorial_complete = true
 
 func _on_next_day_button_pressed():
 	Globals.reset_daily_metrics()
 	get_tree().change_scene_to_file("res://scenes/hotdog_cart.tscn")
+
+func _on_permits_button_pressed():
+	if not Globals.tutorial13 and not Globals.tutorial_complete:
+		Globals.tutorial13 = true
+		$ReportBackground/Tutorial.hide()
+	get_tree().change_scene_to_file("res://scenes/permit_shop.tscn")
+	
+
+func _on_save_button_pressed():
+	Globals.save_game()
+
+func _on_save_quit_button_pressed():
+	Globals.save_game()
+	get_tree().quit()

@@ -21,46 +21,64 @@ one_shot = true
 position = Vector2(315, 287)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-3, -58.5)
 shape = SubResource("RectangleShape2D_nyhxa")
 
 [node name="OrderMoney" type="Label" parent="."]
 visible = false
-offset_left = 268.0
-offset_top = 179.0
-offset_right = 319.0
-offset_bottom = 202.0
+z_index = 1
+offset_left = 276.0
+offset_top = 44.0
+offset_right = 353.0
+offset_bottom = 78.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
+text = "+$4.75"
 
 [node name="OrderTip" type="Label" parent="."]
 visible = false
-offset_left = 314.0
-offset_top = 146.0
-offset_right = 365.0
-offset_bottom = 180.0
+z_index = 1
+offset_left = 276.0
+offset_top = 75.0
+offset_right = 390.0
+offset_bottom = 109.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
+text = "+$0.45 tip"
 
 [node name="OrderReputation" type="Label" parent="."]
 visible = false
-offset_left = 328.0
-offset_top = 209.0
-offset_right = 368.0
-offset_bottom = 237.0
+z_index = 1
+offset_left = 276.0
+offset_top = 105.0
+offset_right = 354.0
+offset_bottom = 139.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24
+text = "+6 Rep"
+
+[node name="OrderSpeedBonus" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = 276.0
+offset_top = 135.0
+offset_right = 430.0
+offset_bottom = 169.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 24
+text = "+10 bonus"
 
 [node name="CustomerLeft" type="Label" parent="."]
 visible = false
-offset_left = 227.0
-offset_top = 165.0
-offset_right = 392.0
-offset_bottom = 199.0
+z_index = 1
+offset_left = 230.0
+offset_top = 70.0
+offset_right = 395.0
+offset_bottom = 104.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 24

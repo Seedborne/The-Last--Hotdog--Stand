@@ -1,0 +1,589 @@
+[gd_scene load_steps=17 format=3 uid="uid://b7tnviqxqgpbk"]
+
+[ext_resource type="Script" path="res://scripts/permit_shop.gd" id="1_f0v5a"]
+[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="1_sulg3"]
+[ext_resource type="Texture2D" uid="uid://c1d6okr3vkf5v" path="res://assets/backgrounds/collegecampus.png" id="2_5u2en"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5yid"]
+bg_color = Color(0.933333, 0.917647, 0.87451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lqeak"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ol43"]
+bg_color = Color(0.972549, 0.964706, 0.945098, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spy5f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyf6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldh5q"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1y3w"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ndfgn"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib64t"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1dv8"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgv44"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4odax"]
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0h08"]
+bg_color = Color(0.933333, 0.921569, 0.886275, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 4.0
+expand_margin_right = 4.0
+
+[node name="PermitShop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("1_f0v5a")
+
+[node name="PermitPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c5yid")
+
+[node name="BackButton" type="Button" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 68.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+text = "Go
+Back"
+
+[node name="PanelCampus" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerCampus" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 155.0
+offset_right = 348.0
+offset_bottom = 319.0
+
+[node name="CampusSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerCampus"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_5u2en")
+centered = false
+
+[node name="LabelCampus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: College Campus"
+horizontal_alignment = 1
+
+[node name="Label2Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 12s"
+horizontal_alignment = 1
+
+[node name="Label3Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 18s"
+horizontal_alignment = 1
+
+[node name="Label4Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 20%"
+horizontal_alignment = 1
+
+[node name="ButtonCampus" type="Button" parent="PermitPanel/VBoxContainerCampus"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_g1y3w")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $100"
+
+[node name="PanelMarket" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 8.0
+offset_right = 689.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerMarket" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 155.0
+offset_right = 723.0
+offset_bottom = 319.0
+
+[node name="MarketSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerMarket"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sulg3")
+centered = false
+
+[node name="LabelMarket" type="Label" parent="PermitPanel/VBoxContainerMarket"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: Farmers Market"
+horizontal_alignment = 1
+
+[node name="Label2Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 10s"
+horizontal_alignment = 1
+
+[node name="Label3Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 16s"
+horizontal_alignment = 1
+
+[node name="Label4Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 30%"
+horizontal_alignment = 1
+
+[node name="ButtonMarket" type="Button" parent="PermitPanel/VBoxContainerMarket"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ndfgn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $200"
+
+[node name="PanelBoardwalk" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 8.0
+offset_right = 1064.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerBoardwalk" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 155.0
+offset_right = 1098.0
+offset_bottom = 319.0
+
+[node name="BoardwalkSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerBoardwalk"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sulg3")
+centered = false
+
+[node name="LabelBoardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: Beach Boardwalk"
+horizontal_alignment = 1
+
+[node name="Label2Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 8s"
+horizontal_alignment = 1
+
+[node name="Label3Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 16s"
+horizontal_alignment = 1
+
+[node name="Label4Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 40%"
+horizontal_alignment = 1
+
+[node name="ButtonBoardwalk" type="Button" parent="PermitPanel/VBoxContainerBoardwalk"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ib64t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $400"
+
+[node name="PanelPlaza" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 85.0
+offset_top = 328.0
+offset_right = 314.0
+offset_bottom = 471.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerPlaza" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 475.0
+offset_right = 348.0
+offset_bottom = 639.0
+
+[node name="PlazaSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerPlaza"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sulg3")
+centered = false
+
+[node name="LabelPlaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: City Plaza"
+horizontal_alignment = 1
+
+[node name="Label2Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 7s"
+horizontal_alignment = 1
+
+[node name="Label3Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 14s"
+horizontal_alignment = 1
+
+[node name="Label4Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 50%"
+horizontal_alignment = 1
+
+[node name="ButtonPlaza" type="Button" parent="PermitPanel/VBoxContainerPlaza"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_r1dv8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $600"
+
+[node name="PanelCarnival" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 328.0
+offset_right = 689.0
+offset_bottom = 471.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerCarnival" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 425.0
+offset_top = 475.0
+offset_right = 723.0
+offset_bottom = 639.0
+
+[node name="CarnivalSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerCarnival"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sulg3")
+centered = false
+
+[node name="LabelCarnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: Carnival"
+horizontal_alignment = 1
+
+[node name="Label2Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 6s"
+horizontal_alignment = 1
+
+[node name="Label3Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 14s"
+horizontal_alignment = 1
+
+[node name="Label4Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 60%"
+horizontal_alignment = 1
+
+[node name="ButtonCarnival" type="Button" parent="PermitPanel/VBoxContainerCarnival"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tgv44")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $1,000"
+
+[node name="PanelArena" type="Panel" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 328.0
+offset_right = 1064.0
+offset_bottom = 471.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
+
+[node name="VBoxContainerArena" type="VBoxContainer" parent="PermitPanel"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 475.0
+offset_right = 1098.0
+offset_bottom = 639.0
+
+[node name="ArenaSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerArena"]
+position = Vector2(40, -142)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_sulg3")
+centered = false
+
+[node name="LabelArena" type="Label" parent="PermitPanel/VBoxContainerArena"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Location: Sports Arena"
+horizontal_alignment = 1
+
+[node name="Label2Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Flow: 5s"
+horizontal_alignment = 1
+
+[node name="Label3Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Customer Patience: 12s"
+horizontal_alignment = 1
+
+[node name="Label4Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Tip Percentage: 80%"
+horizontal_alignment = 1
+
+[node name="ButtonArena" type="Button" parent="PermitPanel/VBoxContainerArena"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_spy5f")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4odax")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jyf6o")
+disabled = true
+text = "Buy Permit - $2,000"
+
+[node name="Tutorial" type="Label" parent="PermitPanel"]
+visible = false
+z_index = 2
+offset_left = 324.0
+offset_top = 7.0
+offset_right = 446.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_w0h08")
+text = "When you can
+afford it, you'll
+return here to 
+buy permits to
+move your hot-
+dog stand to
+new locations
+"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="PermitPanel/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerCampus/ButtonCampus" to="." method="_on_button_campus_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerMarket/ButtonMarket" to="." method="_on_button_market_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerBoardwalk/ButtonBoardwalk" to="." method="_on_button_boardwalk_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerPlaza/ButtonPlaza" to="." method="_on_button_plaza_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerCarnival/ButtonCarnival" to="." method="_on_button_carnival_pressed"]
+[connection signal="pressed" from="PermitPanel/VBoxContainerArena/ButtonArena" to="." method="_on_button_arena_pressed"]
