@@ -43,6 +43,7 @@ func _ready():
 		
 func _on_button_campus_pressed():
 	if Globals.money >= campus_cost:
+		Globals.money -= campus_cost
 		Globals.current_location = "College Campus"
 		Globals.unlocked_campus = true
 		$PermitPanel/VBoxContainerCampus.visible = false
@@ -50,6 +51,7 @@ func _on_button_campus_pressed():
 
 func _on_button_market_pressed():
 	if Globals.money >= market_cost:
+		Globals.money -= market_cost
 		Globals.current_location = "Farmers Market"
 		Globals.unlocked_market = true
 		$PermitPanel/VBoxContainerMarket.visible = false
@@ -57,6 +59,7 @@ func _on_button_market_pressed():
 
 func _on_button_boardwalk_pressed():
 	if Globals.money >= boardwalk_cost:
+		Globals.money -= boardwalk_cost
 		Globals.current_location = "Beach Boardwalk"
 		Globals.unlocked_boardwalk = true
 		$PermitPanel/VBoxContainerBoardwalk.visible = false
@@ -64,6 +67,7 @@ func _on_button_boardwalk_pressed():
 
 func _on_button_plaza_pressed():
 	if Globals.money >= plaza_cost:
+		Globals.money -= plaza_cost
 		Globals.current_location = "City Plaza"
 		Globals.unlocked_plaza = true
 		$PermitPanel/VBoxContainerPlaza.visible = false
@@ -71,6 +75,7 @@ func _on_button_plaza_pressed():
 
 func _on_button_carnival_pressed():
 	if Globals.money >= carnival_cost:
+		Globals.money -= carnival_cost
 		Globals.current_location = "Carnival"
 		Globals.unlocked_carnival = true
 		$PermitPanel/VBoxContainerCarnival.visible = false
@@ -78,6 +83,7 @@ func _on_button_carnival_pressed():
 
 func _on_button_arena_pressed():
 	if Globals.money >= arena_cost:
+		Globals.money -= arena_cost
 		Globals.current_location = "Sports Arena"
 		Globals.unlocked_arena = true
 		$PermitPanel/VBoxContainerArena.visible = false

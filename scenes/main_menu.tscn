@@ -1,14 +1,44 @@
-[gd_scene load_steps=8 format=3 uid="uid://4ykwbo3tp6to"]
+[gd_scene load_steps=22 format=3 uid="uid://4ykwbo3tp6to"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_agw42"]
 [ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_qwunh"]
 [ext_resource type="Texture2D" uid="uid://irycmlysh28n" path="res://assets/hotdogcarttest.png" id="3_m4c45"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="4_q461v"]
+[ext_resource type="Texture2D" uid="uid://c1wc0ymcf0uu7" path="res://assets/hdrb.png" id="5_ifxxb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ox6iw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x48mu"]
+texture = ExtResource("5_ifxxb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxh3h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ayoax"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q7xef"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0i4hg"]
+texture = ExtResource("5_ifxxb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktgrf"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hkdew"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aaqi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2chn"]
+texture = ExtResource("5_ifxxb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80x8r"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cn4k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agmgk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_frfjv"]
+texture = ExtResource("5_ifxxb")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ejs5t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu3k3"]
 
@@ -18,7 +48,6 @@ anchors_preset = 0
 script = ExtResource("1_agw42")
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(0.422, 0.422)
 texture = ExtResource("2_qwunh")
 centered = false
 
@@ -28,33 +57,54 @@ texture = ExtResource("3_m4c45")
 
 [node name="MainMenuContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 475.0
+offset_left = 485.0
 offset_top = 280.0
-offset_right = 679.0
-offset_bottom = 524.0
+offset_right = 659.0
+offset_bottom = 536.0
 alignment = 1
 
 [node name="NewGame" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_q461v")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ox6iw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x48mu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_lxh3h")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ayoax")
 text = "New Game"
+icon_alignment = 1
 
 [node name="LoadGame" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_q461v")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q7xef")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0i4hg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ktgrf")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hkdew")
 text = "Load Game"
 
 [node name="Settings" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_q461v")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8aaqi")
+theme_override_styles/hover = SubResource("StyleBoxTexture_l2chn")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_80x8r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_6cn4k")
 text = "Settings"
 
 [node name="Quit" type="Button" parent="MainMenuContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_q461v")
 theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxEmpty_agmgk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_frfjv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ejs5t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uu3k3")
 text = "Quit"
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfhaeb1non83h"]
+[gd_scene load_steps=11 format=3 uid="uid://bfhaeb1non83h"]
 
 [ext_resource type="Script" path="res://scripts/daily_report.gd" id="1_osdtj"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="2_dcfpf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_44ksm"]
 bg_color = Color(0.93197, 0.916459, 0.874442, 1)
@@ -103,11 +104,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_44ksm")
 [node name="Tutorial" type="Label" parent="ReportBackground"]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = 845.0
 offset_top = 547.0
 offset_right = 989.0
 offset_bottom = 574.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2e58i")
 text = "Go to permit shop"
 horizontal_alignment = 1
@@ -115,11 +120,15 @@ horizontal_alignment = 1
 [node name="TutorialComplete" type="Label" parent="ReportBackground"]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = 863.0
 offset_top = 516.0
 offset_right = 1112.0
 offset_bottom = 569.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_2e58i")
 text = "You've completed the tutorial! 
 Congratulations, and good luck!"
@@ -136,6 +145,9 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_f5mrb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_73cw4")
@@ -154,6 +166,9 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_f5mrb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qhscb")
@@ -172,6 +187,9 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_f5mrb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qhscb")
@@ -190,6 +208,9 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_f5mrb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qhscb")
@@ -204,6 +225,9 @@ offset_top = 10.0
 offset_right = 683.0
 offset_bottom = 60.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 36
 text = "Daily Report"
 horizontal_alignment = 1
@@ -219,6 +243,9 @@ alignment = 1
 [node name="CurrentDay" type="Label" parent="VBoxContainerCustomers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 28
 text = "Day: 0"
 horizontal_alignment = 1
@@ -231,6 +258,9 @@ horizontal_alignment = 1
 [node name="CustomersServed" type="Label" parent="VBoxContainerCustomers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Customers Served: 0"
 horizontal_alignment = 1
@@ -238,6 +268,9 @@ horizontal_alignment = 1
 [node name="CustomersLost" type="Label" parent="VBoxContainerCustomers"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Customers Lost: 0"
 horizontal_alignment = 1
@@ -253,31 +286,45 @@ alignment = 1
 [node name="Sales" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Sales: $0.00"
 
 [node name="Tips" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Tips: $0.00"
 
 [node name="IngredientCost" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Ingredient Costs: $0.00"
 
 [node name="UnlockedIngredientCost" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Ingredient Unlock Costs: $0.00"
-horizontal_alignment = 1
 
 [node name="NetProfit" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Net Profit: $0.00"
 
@@ -289,6 +336,9 @@ horizontal_alignment = 1
 [node name="TotalCurrency" type="Label" parent="VBoxContainerMoney"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Total Currency: $0.00"
 
@@ -303,24 +353,36 @@ alignment = 1
 [node name="ReputationPointsEarned" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Reputation Points Earned: 0"
 
 [node name="SpeedBonus" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Speed Bonus: 0"
 
 [node name="ReputationPointsLost" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Reputation Points Lost: 0"
 
 [node name="NetReputationGain" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Net Reputation Gain: 0"
 
@@ -332,12 +394,18 @@ horizontal_alignment = 1
 [node name="TotalReputation" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Total Reputation: 0"
 
 [node name="ReputationTier" type="Label" parent="VBoxContainerRep"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_dcfpf")
 theme_override_font_sizes/font_size = 24
 text = "Reputation Tier: Bun Beginner"
 

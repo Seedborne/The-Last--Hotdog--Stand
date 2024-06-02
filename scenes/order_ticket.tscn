@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ce240gm6arbmj"]
+[gd_scene load_steps=4 format=3 uid="uid://ce240gm6arbmj"]
 
 [ext_resource type="Script" path="res://scripts/order_ticket.gd" id="1_gvpyh"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="2_biiei"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vgj04"]
 bg_color = Color(0.933333, 0.921569, 0.886275, 0.627451)
@@ -26,11 +27,17 @@ offset_bottom = 272.0
 [node name="SausageType" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_biiei")
 vertical_alignment = 1
 
 [node name="BunType" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_biiei")
 vertical_alignment = 1
 
 [node name="Toppings" type="VBoxContainer" parent="VBoxContainer"]
@@ -41,6 +48,9 @@ size_flags_vertical = 4
 [node name="Side" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_biiei")
 vertical_alignment = 1
 
 [node name="HideTimer" type="Timer" parent="."]

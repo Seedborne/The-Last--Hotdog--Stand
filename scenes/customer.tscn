@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://28t2spvyrii1"]
+[gd_scene load_steps=5 format=3 uid="uid://28t2spvyrii1"]
 
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rji70"]
 [ext_resource type="Texture2D" uid="uid://b8n3hjgfd087d" path="res://assets/customers/blueguy.png" id="2_gk1it"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="3_fokgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyhxa"]
 size = Vector2(90, 157)
@@ -33,6 +34,7 @@ offset_right = 353.0
 offset_bottom = 78.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fokgw")
 theme_override_font_sizes/font_size = 24
 text = "+$4.75"
 
@@ -45,6 +47,7 @@ offset_right = 390.0
 offset_bottom = 109.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fokgw")
 theme_override_font_sizes/font_size = 24
 text = "+$0.45 tip"
 
@@ -57,6 +60,7 @@ offset_right = 354.0
 offset_bottom = 139.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fokgw")
 theme_override_font_sizes/font_size = 24
 text = "+6 Rep"
 
@@ -69,18 +73,20 @@ offset_right = 430.0
 offset_bottom = 169.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fokgw")
 theme_override_font_sizes/font_size = 24
 text = "+10 bonus"
 
 [node name="CustomerLeft" type="Label" parent="."]
 visible = false
 z_index = 1
-offset_left = 230.0
-offset_top = 70.0
-offset_right = 395.0
-offset_bottom = 104.0
+offset_left = 246.0
+offset_top = 74.0
+offset_right = 385.0
+offset_bottom = 110.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_fokgw")
 theme_override_font_sizes/font_size = 24
 text = "Customer left!"
 

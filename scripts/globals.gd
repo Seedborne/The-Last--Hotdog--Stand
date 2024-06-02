@@ -1,6 +1,6 @@
 extends Node
 
-var money = 50.00
+var money = 0.00
 var reputation = 0
 
 var current_location = "Community Park"
@@ -31,6 +31,7 @@ var tutorial12 = false
 var tutorial13 = false
 var tutorial14 = false
 var tutorial_complete = false
+var first_side_unlocked = false
 
 var held_item = null
 var order_correct = false
@@ -212,6 +213,11 @@ func unlock_ingredient(ingredient_type: String, ingredient_name: String) -> bool
 			update_money()
 			ingredient.unlocked = true
 			unlocked_ingredients_cost += ingredient.unlock_cost
+			if ingredient_type == "side" and not Globals.first_side_unlocked:
+				Globals.first_side_unlocked = true
+				var main_scene = get_tree().root.get_node("HotdogCart")  # Adjust this path to your main scene
+				var first_side_label = main_scene.get_node("FirstSideTutorial")  # Adjust this path to your label node
+				first_side_label.show()
 			return true
 	return false
 
@@ -296,6 +302,7 @@ func save_game():
 		"current_location": current_location,
 		"current_day": current_day,
 		"tutorial_complete": tutorial_complete,
+		"first_side_unlocked": first_side_unlocked,
 		"unlocked_ingredients": {
 			"sausages": sausages,
 			"buns": buns,
@@ -328,6 +335,7 @@ func load_game():
 		current_location = save_data.current_location
 		current_day = save_data.current_day
 		tutorial_complete = save_data.tutorial_complete
+		first_side_unlocked = save_data.first_side_unlocked
 		sausages = save_data.unlocked_ingredients.sausages
 		buns = save_data.unlocked_ingredients.buns
 		toppings = save_data.unlocked_ingredients.toppings

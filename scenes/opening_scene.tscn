@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1y4ba0ijhwlc"]
+[gd_scene load_steps=6 format=3 uid="uid://c1y4ba0ijhwlc"]
 
 [ext_resource type="Script" path="res://scripts/opening_scene.gd" id="1_c4una"]
 [ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_6jt1f"]
 [ext_resource type="Texture2D" uid="uid://tglxt0aq323x" path="res://icon.svg" id="2_eug24"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="4_ot2w5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w001r"]
 
@@ -14,7 +15,6 @@ offset_bottom = 40.0
 script = ExtResource("1_c4una")
 
 [node name="Background" type="Sprite2D" parent="."]
-scale = Vector2(0.422, 0.422)
 texture = ExtResource("2_6jt1f")
 centered = false
 
@@ -47,5 +47,9 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_ot2w5")
+theme_override_font_sizes/font_size = 24
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w001r")
 text = "Next"
+icon_alignment = 1

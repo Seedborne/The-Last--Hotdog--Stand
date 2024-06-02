@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://d1tnxs0a7jws"]
+[gd_scene load_steps=52 format=3 uid="uid://d1tnxs0a7jws"]
 
 [ext_resource type="Script" path="res://scripts/hotdog_cart.gd" id="1_iuwld"]
 [ext_resource type="Texture2D" uid="uid://b4fwovhoop2nd" path="res://assets/hotdogcart.png" id="2_ehlfu"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="3_6apft"]
 [ext_resource type="Texture2D" uid="uid://d1qaao5oiit8" path="res://assets/ketchupbottle.png" id="3_gogtt"]
 [ext_resource type="Texture2D" uid="uid://k2p08t2s087h" path="res://assets/mustardbottle.png" id="4_bq38m"]
 [ext_resource type="Texture2D" uid="uid://dtri4igk5luqg" path="res://assets/ordertray.png" id="5_wriet"]
@@ -21,6 +22,13 @@
 [ext_resource type="Texture2D" uid="uid://cd6gqlm7iymn4" path="res://assets/ingredients/shreddedcheese.png" id="19_jxkmq"]
 [ext_resource type="Texture2D" uid="uid://b22vynf8csj43" path="res://assets/ingredients/nachocheese.png" id="20_gykon"]
 [ext_resource type="Texture2D" uid="uid://y4whfjdh8swv" path="res://assets/ingredients/chili.png" id="21_cyxug"]
+[ext_resource type="Texture2D" uid="uid://b448lq4nea2dt" path="res://assets/ingredients/spoonrelsh.png" id="23_3bp0x"]
+[ext_resource type="Texture2D" uid="uid://brurnk0nnrexm" path="res://assets/ingredients/spoononion.png" id="24_1y5ug"]
+[ext_resource type="Texture2D" uid="uid://bd7ucw8cietwo" path="res://assets/ingredients/spoonjal.png" id="25_4bmru"]
+[ext_resource type="Texture2D" uid="uid://2sxwmi6o6mgr" path="res://assets/ingredients/spoonchz.png" id="26_lqnsh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hddmd"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.733333)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xgfqr"]
 
@@ -94,7 +102,6 @@ texture = ExtResource("2_ehlfu")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
-scale = Vector2(0.422, 0.422)
 centered = false
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -105,49 +112,59 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Panel" type="Panel" parent="UI"]
+offset_right = 1152.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hddmd")
+
 [node name="MoneyDisplay" type="Label" parent="UI"]
 offset_left = 288.0
 offset_right = 418.0
-offset_bottom = 23.0
+offset_bottom = 30.0
 size_flags_horizontal = 4
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 text = "Money: $0.00"
 horizontal_alignment = 1
 
 [node name="ReputationDisplay" type="Label" parent="UI"]
 offset_left = 736.0
 offset_right = 893.0
-offset_bottom = 23.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+offset_bottom = 30.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 text = "Reputation: 0"
 horizontal_alignment = 1
 
 [node name="ReputationTier" type="Label" parent="UI"]
 offset_left = 976.0
 offset_right = 1149.0
-offset_bottom = 23.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+offset_bottom = 30.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 text = "Bun Beginner"
 horizontal_alignment = 1
 
 [node name="Clock" type="Label" parent="UI"]
 offset_left = 552.0
 offset_right = 592.0
-offset_bottom = 23.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+offset_bottom = 30.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 20
 text = "0:00"
 horizontal_alignment = 1
 
 [node name="DayTracker" type="Label" parent="UI"]
 offset_left = 112.0
-offset_right = 155.0
-offset_bottom = 23.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+offset_right = 165.0
+offset_bottom = 30.0
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 text = "Day: 0"
 horizontal_alignment = 1
 
@@ -188,6 +205,9 @@ offset_left = 438.0
 offset_top = 442.0
 offset_right = 544.0
 offset_bottom = 529.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qhobd")
 text = "Relish
 (Locked)"
@@ -197,7 +217,9 @@ visible = false
 layout_mode = 0
 offset_right = 106.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$40"
 
@@ -206,6 +228,9 @@ offset_left = 549.0
 offset_top = 442.0
 offset_right = 658.0
 offset_bottom = 529.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bvqjp")
 text = "Onions
 (Locked)"
@@ -215,7 +240,9 @@ visible = false
 layout_mode = 0
 offset_right = 109.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$50"
 
@@ -224,6 +251,9 @@ offset_left = 663.0
 offset_top = 442.0
 offset_right = 778.0
 offset_bottom = 529.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xielf")
 text = "Jalapeños
 (Locked)"
@@ -233,7 +263,9 @@ visible = false
 layout_mode = 0
 offset_right = 115.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$60"
 
@@ -241,7 +273,10 @@ text = "$60"
 offset_left = 783.0
 offset_top = 442.0
 offset_right = 897.0
-offset_bottom = 529.0
+offset_bottom = 531.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lssru")
 text = "Shredded
 Cheese 
@@ -252,7 +287,9 @@ visible = false
 layout_mode = 0
 offset_right = 114.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$80"
 
@@ -260,7 +297,10 @@ text = "$80"
 offset_left = 902.0
 offset_top = 442.0
 offset_right = 1011.0
-offset_bottom = 529.0
+offset_bottom = 531.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2jotm")
 text = "Nacho
 Cheese
@@ -271,7 +311,9 @@ visible = false
 layout_mode = 0
 offset_right = 109.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$100"
 
@@ -280,6 +322,9 @@ offset_left = 1016.0
 offset_top = 442.0
 offset_right = 1133.0
 offset_bottom = 529.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d238h")
 text = "Chili
 (Locked)"
@@ -289,7 +334,9 @@ visible = false
 layout_mode = 0
 offset_right = 117.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$120"
 
@@ -298,6 +345,9 @@ offset_left = 18.0
 offset_top = 442.0
 offset_right = 144.0
 offset_bottom = 529.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 22
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yugiv")
 text = "White Bun"
 
@@ -305,7 +355,10 @@ text = "White Bun"
 offset_left = 149.0
 offset_top = 442.0
 offset_right = 286.0
-offset_bottom = 529.0
+offset_bottom = 531.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s5kis")
 text = "Whole Wheat
 Bun
@@ -317,7 +370,9 @@ visible = false
 layout_mode = 0
 offset_right = 137.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$100"
 
@@ -325,7 +380,10 @@ text = "$100"
 offset_left = 291.0
 offset_top = 442.0
 offset_right = 418.0
-offset_bottom = 529.0
+offset_bottom = 531.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4c5tb")
 text = "Gluten Free
 Bun
@@ -336,7 +394,9 @@ visible = false
 layout_mode = 0
 offset_right = 127.0
 offset_bottom = 87.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$200"
 
@@ -345,6 +405,9 @@ offset_left = 18.0
 offset_top = 549.0
 offset_right = 143.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 22
 theme_override_styles/focus = SubResource("StyleBoxEmpty_3fika")
 text = "Hotdog"
 
@@ -353,6 +416,9 @@ offset_left = 148.0
 offset_top = 549.0
 offset_right = 285.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kt6jh")
 text = "Veggie Dog
 (Locked)"
@@ -362,7 +428,9 @@ visible = false
 layout_mode = 0
 offset_right = 137.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$200"
 
@@ -371,6 +439,9 @@ offset_left = 290.0
 offset_top = 549.0
 offset_right = 417.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7i68v")
 text = "Bratwurst
 (Locked)"
@@ -380,7 +451,9 @@ visible = false
 layout_mode = 0
 offset_right = 127.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$300"
 
@@ -389,6 +462,9 @@ offset_left = 438.0
 offset_top = 549.0
 offset_right = 597.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jfva1")
 text = "Potato Chips
 (Locked)"
@@ -398,7 +474,9 @@ visible = false
 layout_mode = 0
 offset_right = 159.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$200"
 
@@ -407,6 +485,9 @@ offset_left = 602.0
 offset_top = 549.0
 offset_right = 778.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rxt0h")
 text = "Coleslaw
 (Locked)"
@@ -416,7 +497,9 @@ visible = false
 layout_mode = 0
 offset_right = 176.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$250"
 
@@ -425,6 +508,9 @@ offset_left = 783.0
 offset_top = 549.0
 offset_right = 962.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lx2cu")
 text = "French Fries
 (Locked)"
@@ -434,7 +520,9 @@ visible = false
 layout_mode = 0
 offset_right = 179.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$300"
 
@@ -443,6 +531,9 @@ offset_left = 967.0
 offset_top = 549.0
 offset_right = 1133.0
 offset_bottom = 630.0
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2plc1")
 text = "Mac & Cheese
 (Locked)"
@@ -452,7 +543,9 @@ visible = false
 layout_mode = 0
 offset_right = 166.0
 offset_bottom = 81.0
-theme_override_font_sizes/font_size = 30
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_x27uf")
 text = "$500"
 
@@ -614,6 +707,10 @@ offset_top = 260.0
 offset_right = 193.0
 offset_bottom = 287.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_3ohva")
 text = "Tutorial"
 horizontal_alignment = 1
@@ -626,9 +723,94 @@ offset_top = 260.0
 offset_right = 193.0
 offset_bottom = 287.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_3ohva")
 text = "Tutorial"
 horizontal_alignment = 1
+
+[node name="TutorialMoney" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = 648.0
+offset_top = 280.0
+offset_right = 693.0
+offset_bottom = 316.0
+theme_override_colors/font_color = Color(0, 0.988235, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 24
+text = "+$40"
+horizontal_alignment = 1
+
+[node name="FirstSideTutorial" type="Label" parent="."]
+visible = false
+z_index = 2
+offset_left = 392.0
+offset_top = 48.0
+offset_right = 764.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_6apft")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ohva")
+text = "Congrats on unlocking your first side! 
+You'll need to grab a bowl from the stack
+and put it on the tray before placing a side."
+horizontal_alignment = 1
+
+[node name="RelishSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("23_3bp0x")
+
+[node name="OnionsSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("24_1y5ug")
+
+[node name="JalapenosSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("25_4bmru")
+
+[node name="ShreddedCheeseSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("26_lqnsh")
+
+[node name="NachoCheeseSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="ChiliSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="ChipsHeld" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="ColeslawSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="FriesHeld" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+
+[node name="MacCheeseSpoon" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]
@@ -666,8 +848,8 @@ horizontal_alignment = 1
 [connection signal="pressed" from="MacCheese/MacUnlock" to="." method="_on_mac_unlock_pressed"]
 [connection signal="pressed" from="SideBowls" to="." method="_on_side_bowls_pressed"]
 [connection signal="pressed" from="WrapPapers" to="." method="_on_wrap_papers_pressed"]
-[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_gui_input_event"]
 [connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_input_event"]
+[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_gui_input_event"]
 [connection signal="input_event" from="GarbageArea" to="." method="_on_garbage_area_input_event"]
 [connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]
 [connection signal="timeout" from="CustomerServedTimer" to="." method="_on_customer_served_timer_timeout"]

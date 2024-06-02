@@ -1,8 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7tnviqxqgpbk"]
+[gd_scene load_steps=22 format=3 uid="uid://b7tnviqxqgpbk"]
 
 [ext_resource type="Script" path="res://scripts/permit_shop.gd" id="1_f0v5a"]
 [ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="1_sulg3"]
 [ext_resource type="Texture2D" uid="uid://c1d6okr3vkf5v" path="res://assets/backgrounds/collegecampus.png" id="2_5u2en"]
+[ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="2_we8gd"]
+[ext_resource type="Texture2D" uid="uid://ccv3rg850hdwj" path="res://assets/backgrounds/farmersmarket.png" id="4_mpw0m"]
+[ext_resource type="Texture2D" uid="uid://chlqphf2um23w" path="res://assets/backgrounds/beachboardwalk.png" id="5_si0pt"]
+[ext_resource type="Texture2D" uid="uid://csaqs4tnk860u" path="res://assets/backgrounds/carnival.png" id="7_knrxr"]
+[ext_resource type="Texture2D" uid="uid://cyvo8fx2lq658" path="res://assets/backgrounds/sportsarena.png" id="8_xnwdf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c5yid"]
 bg_color = Color(0.933333, 0.917647, 0.87451, 1)
@@ -47,10 +52,10 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldh5q"]
 bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1y3w"]
 border_width_left = 4
@@ -157,6 +162,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -167,28 +175,31 @@ Back"
 
 [node name="PanelCampus" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 8.0
-offset_right = 314.0
-offset_bottom = 151.0
+offset_left = 87.0
+offset_top = 11.0
+offset_right = 312.0
+offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerCampus" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 155.0
+offset_top = 146.0
 offset_right = 348.0
-offset_bottom = 319.0
+offset_bottom = 320.0
 
 [node name="CampusSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerCampus"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
 texture = ExtResource("2_5u2en")
 centered = false
 
 [node name="LabelCampus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: College Campus"
 horizontal_alignment = 1
@@ -196,6 +207,9 @@ horizontal_alignment = 1
 [node name="Label2Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 12s"
 horizontal_alignment = 1
@@ -203,6 +217,9 @@ horizontal_alignment = 1
 [node name="Label3Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 18s"
 horizontal_alignment = 1
@@ -210,6 +227,9 @@ horizontal_alignment = 1
 [node name="Label4Campus" type="Label" parent="PermitPanel/VBoxContainerCampus"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 20%"
 horizontal_alignment = 1
@@ -222,6 +242,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -233,28 +256,31 @@ text = "Buy Permit - $100"
 
 [node name="PanelMarket" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 8.0
-offset_right = 689.0
-offset_bottom = 151.0
+offset_left = 462.0
+offset_top = 11.0
+offset_right = 687.0
+offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerMarket" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 425.0
-offset_top = 155.0
+offset_top = 146.0
 offset_right = 723.0
-offset_bottom = 319.0
+offset_bottom = 320.0
 
 [node name="MarketSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerMarket"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_sulg3")
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("4_mpw0m")
 centered = false
 
 [node name="LabelMarket" type="Label" parent="PermitPanel/VBoxContainerMarket"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: Farmers Market"
 horizontal_alignment = 1
@@ -262,6 +288,9 @@ horizontal_alignment = 1
 [node name="Label2Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 10s"
 horizontal_alignment = 1
@@ -269,6 +298,9 @@ horizontal_alignment = 1
 [node name="Label3Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 16s"
 horizontal_alignment = 1
@@ -276,6 +308,9 @@ horizontal_alignment = 1
 [node name="Label4Market" type="Label" parent="PermitPanel/VBoxContainerMarket"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 30%"
 horizontal_alignment = 1
@@ -288,6 +323,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -299,28 +337,31 @@ text = "Buy Permit - $200"
 
 [node name="PanelBoardwalk" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 835.0
-offset_top = 8.0
-offset_right = 1064.0
-offset_bottom = 151.0
+offset_left = 837.0
+offset_top = 11.0
+offset_right = 1062.0
+offset_bottom = 140.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerBoardwalk" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 800.0
-offset_top = 155.0
+offset_top = 146.0
 offset_right = 1098.0
-offset_bottom = 319.0
+offset_bottom = 320.0
 
 [node name="BoardwalkSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerBoardwalk"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_sulg3")
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("5_si0pt")
 centered = false
 
 [node name="LabelBoardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: Beach Boardwalk"
 horizontal_alignment = 1
@@ -328,6 +369,9 @@ horizontal_alignment = 1
 [node name="Label2Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 8s"
 horizontal_alignment = 1
@@ -335,6 +379,9 @@ horizontal_alignment = 1
 [node name="Label3Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 16s"
 horizontal_alignment = 1
@@ -342,6 +389,9 @@ horizontal_alignment = 1
 [node name="Label4Boardwalk" type="Label" parent="PermitPanel/VBoxContainerBoardwalk"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 40%"
 horizontal_alignment = 1
@@ -354,6 +404,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -365,28 +418,31 @@ text = "Buy Permit - $400"
 
 [node name="PanelPlaza" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 85.0
-offset_top = 328.0
-offset_right = 314.0
-offset_bottom = 471.0
+offset_left = 87.0
+offset_top = 331.0
+offset_right = 312.0
+offset_bottom = 460.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerPlaza" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 50.0
-offset_top = 475.0
+offset_top = 466.0
 offset_right = 348.0
-offset_bottom = 639.0
+offset_bottom = 640.0
 
 [node name="PlazaSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerPlaza"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
 texture = ExtResource("1_sulg3")
 centered = false
 
 [node name="LabelPlaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: City Plaza"
 horizontal_alignment = 1
@@ -394,6 +450,9 @@ horizontal_alignment = 1
 [node name="Label2Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 7s"
 horizontal_alignment = 1
@@ -401,6 +460,9 @@ horizontal_alignment = 1
 [node name="Label3Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 14s"
 horizontal_alignment = 1
@@ -408,6 +470,9 @@ horizontal_alignment = 1
 [node name="Label4Plaza" type="Label" parent="PermitPanel/VBoxContainerPlaza"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 50%"
 horizontal_alignment = 1
@@ -420,6 +485,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -431,28 +499,31 @@ text = "Buy Permit - $600"
 
 [node name="PanelCarnival" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 460.0
-offset_top = 328.0
-offset_right = 689.0
-offset_bottom = 471.0
+offset_left = 462.0
+offset_top = 331.0
+offset_right = 687.0
+offset_bottom = 460.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerCarnival" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 425.0
-offset_top = 475.0
+offset_top = 466.0
 offset_right = 723.0
-offset_bottom = 639.0
+offset_bottom = 640.0
 
 [node name="CarnivalSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerCarnival"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_sulg3")
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("7_knrxr")
 centered = false
 
 [node name="LabelCarnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: Carnival"
 horizontal_alignment = 1
@@ -460,6 +531,9 @@ horizontal_alignment = 1
 [node name="Label2Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 6s"
 horizontal_alignment = 1
@@ -467,6 +541,9 @@ horizontal_alignment = 1
 [node name="Label3Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 14s"
 horizontal_alignment = 1
@@ -474,6 +551,9 @@ horizontal_alignment = 1
 [node name="Label4Carnival" type="Label" parent="PermitPanel/VBoxContainerCarnival"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 60%"
 horizontal_alignment = 1
@@ -486,6 +566,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -497,28 +580,31 @@ text = "Buy Permit - $1,000"
 
 [node name="PanelArena" type="Panel" parent="PermitPanel"]
 layout_mode = 0
-offset_left = 835.0
-offset_top = 328.0
-offset_right = 1064.0
-offset_bottom = 471.0
+offset_left = 837.0
+offset_top = 331.0
+offset_right = 1062.0
+offset_bottom = 460.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ldh5q")
 
 [node name="VBoxContainerArena" type="VBoxContainer" parent="PermitPanel"]
 layout_mode = 0
 offset_left = 800.0
-offset_top = 475.0
+offset_top = 466.0
 offset_right = 1098.0
-offset_bottom = 639.0
+offset_bottom = 640.0
 
 [node name="ArenaSprite" type="Sprite2D" parent="PermitPanel/VBoxContainerArena"]
-position = Vector2(40, -142)
-scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_sulg3")
+position = Vector2(40, -132)
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("8_xnwdf")
 centered = false
 
 [node name="LabelArena" type="Label" parent="PermitPanel/VBoxContainerArena"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Location: Sports Arena"
 horizontal_alignment = 1
@@ -526,6 +612,9 @@ horizontal_alignment = 1
 [node name="Label2Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Flow: 5s"
 horizontal_alignment = 1
@@ -533,6 +622,9 @@ horizontal_alignment = 1
 [node name="Label3Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Customer Patience: 12s"
 horizontal_alignment = 1
@@ -540,6 +632,9 @@ horizontal_alignment = 1
 [node name="Label4Arena" type="Label" parent="PermitPanel/VBoxContainerArena"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 text = "Tip Percentage: 80%"
 horizontal_alignment = 1
@@ -552,6 +647,9 @@ theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("2_we8gd")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_lqeak")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ol43")
@@ -564,6 +662,7 @@ text = "Buy Permit - $2,000"
 [node name="Tutorial" type="Label" parent="PermitPanel"]
 visible = false
 z_index = 2
+layout_mode = 0
 offset_left = 324.0
 offset_top = 7.0
 offset_right = 446.0
