@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://d1tnxs0a7jws"]
+[gd_scene load_steps=82 format=3 uid="uid://d1tnxs0a7jws"]
 
 [ext_resource type="Script" path="res://scripts/hotdog_cart.gd" id="1_iuwld"]
 [ext_resource type="Texture2D" uid="uid://b4fwovhoop2nd" path="res://assets/hotdogcart.png" id="2_ehlfu"]
@@ -23,9 +23,39 @@
 [ext_resource type="Texture2D" uid="uid://b22vynf8csj43" path="res://assets/ingredients/nachocheese.png" id="20_gykon"]
 [ext_resource type="Texture2D" uid="uid://y4whfjdh8swv" path="res://assets/ingredients/chili.png" id="21_cyxug"]
 [ext_resource type="Texture2D" uid="uid://b448lq4nea2dt" path="res://assets/ingredients/spoonrelsh.png" id="23_3bp0x"]
+[ext_resource type="Texture2D" uid="uid://b4hr0u2n2j0hm" path="res://assets/ingredients/bowlchips.png" id="23_sauey"]
 [ext_resource type="Texture2D" uid="uid://brurnk0nnrexm" path="res://assets/ingredients/spoononion.png" id="24_1y5ug"]
+[ext_resource type="Texture2D" uid="uid://co8pbo854j5bx" path="res://assets/ingredients/bowlslaw.png" id="24_n8n1w"]
 [ext_resource type="Texture2D" uid="uid://bd7ucw8cietwo" path="res://assets/ingredients/spoonjal.png" id="25_4bmru"]
+[ext_resource type="Texture2D" uid="uid://cjftfw5d53y3y" path="res://assets/ingredients/bowlfries.png" id="25_ntnk3"]
+[ext_resource type="Texture2D" uid="uid://t4ads2822cfm" path="res://assets/ingredients/bowlmac.png" id="26_lcu3b"]
 [ext_resource type="Texture2D" uid="uid://2sxwmi6o6mgr" path="res://assets/ingredients/spoonchz.png" id="26_lqnsh"]
+[ext_resource type="AudioStream" uid="uid://dl7s5hnmryfi3" path="res://assets/audio/squirtbottle.mp3" id="27_csuyg"]
+[ext_resource type="AudioStream" uid="uid://cam1yjqn5adp3" path="res://assets/audio/bottleupdown.mp3" id="27_datfk"]
+[ext_resource type="AudioStream" uid="uid://di0drtvkriipu" path="res://assets/audio/select.mp3" id="28_yfrx1"]
+[ext_resource type="AudioStream" uid="uid://covn5ld0g1het" path="res://assets/audio/bell.mp3" id="30_b50hm"]
+[ext_resource type="Texture2D" uid="uid://cploni7kf1g3u" path="res://assets/ingredients/spoonnacho.png" id="31_r31p8"]
+[ext_resource type="Texture2D" uid="uid://chlg31rfbm0ey" path="res://assets/ingredients/spoonchili.png" id="31_wmmsm"]
+[ext_resource type="Texture2D" uid="uid://ccellauqnouqp" path="res://assets/ingredients/heldchips.png" id="33_t1fgh"]
+[ext_resource type="Texture2D" uid="uid://pl8cmqj6yk7y" path="res://assets/ingredients/spoonslaw.png" id="34_m02ud"]
+[ext_resource type="Texture2D" uid="uid://dqxxecm86hqj0" path="res://assets/ingredients/heldfries.png" id="35_jrn2y"]
+[ext_resource type="Texture2D" uid="uid://dmtsqgeqji2sl" path="res://assets/ingredients/spoonmac.png" id="36_an4qy"]
+[ext_resource type="AudioStream" uid="uid://b1eeel4hs0e0o" path="res://assets/audio/wetsquish.mp3" id="39_pavfm"]
+[ext_resource type="AudioStream" uid="uid://d1twrg0i5bsps" path="res://assets/audio/ingredientssound.mp3" id="40_ipbnn"]
+[ext_resource type="AudioStream" uid="uid://0701atx7khmc" path="res://assets/audio/shakesound.mp3" id="41_ht155"]
+[ext_resource type="AudioStream" uid="uid://bxwclop6m16ui" path="res://assets/audio/maccheesesound.mp3" id="42_mwe8a"]
+[ext_resource type="AudioStream" uid="uid://cxcfqrwk0qqy1" path="res://assets/audio/chipssound.mp3" id="43_y44cp"]
+[ext_resource type="AudioStream" uid="uid://c0nntj8o00ru1" path="res://assets/audio/coleslawsound.mp3" id="44_xwrqr"]
+[ext_resource type="AudioStream" uid="uid://djaeji1n25ll5" path="res://assets/audio/friessound.mp3" id="45_erply"]
+[ext_resource type="AudioStream" uid="uid://d26fatncbr3yx" path="res://assets/audio/bunsounds.mp3" id="46_dh0pw"]
+[ext_resource type="AudioStream" uid="uid://u74puxl3vdtr" path="res://assets/audio/hotdogsound.mp3" id="47_65cq4"]
+[ext_resource type="AudioStream" uid="uid://bwog2rbufaqt" path="res://assets/audio/bowlpickup.mp3" id="48_bx0oc"]
+[ext_resource type="AudioStream" uid="uid://dubivaaj3at2t" path="res://assets/audio/bowlplace.mp3" id="49_8e5eb"]
+[ext_resource type="AudioStream" uid="uid://gk75ovc8l71s" path="res://assets/audio/page_flip.mp3" id="50_7ywiv"]
+[ext_resource type="AudioStream" uid="uid://cs3dsa6stm2yp" path="res://assets/audio/placepaper.mp3" id="51_gdf57"]
+[ext_resource type="AudioStream" uid="uid://cpg5ymwibib15" path="res://assets/audio/trashsound.mp3" id="54_o51i0"]
+[ext_resource type="AudioStream" uid="uid://cgcxgfaj5bxry" path="res://assets/audio/coins_sound.mp3" id="54_uvmt5"]
+[ext_resource type="AudioStream" uid="uid://d2lqc27rdfbel" path="res://assets/audio/wrong.mp3" id="55_ajjqv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hddmd"]
 bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.733333)
@@ -175,28 +205,32 @@ one_shot = true
 [node name="CustomerFlow" type="Timer" parent="."]
 
 [node name="Ketchup" type="Button" parent="."]
-offset_left = 820.0
-offset_top = 267.0
-offset_right = 858.0
-offset_bottom = 382.0
+offset_left = 816.0
+offset_top = 264.0
+offset_right = 872.0
+offset_bottom = 396.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xgfqr")
 flat = true
 
 [node name="KetchupSprite" type="Sprite2D" parent="Ketchup"]
 z_index = 2
+position = Vector2(-208, -24)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_gogtt")
 centered = false
 
 [node name="Mustard" type="Button" parent="."]
-offset_left = 864.0
-offset_top = 306.0
-offset_right = 912.0
-offset_bottom = 382.0
+offset_left = 888.0
+offset_top = 288.0
+offset_right = 952.0
+offset_bottom = 390.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_msygn")
 flat = true
 
 [node name="MustardSprite" type="Sprite2D" parent="Mustard"]
 z_index = 2
+position = Vector2(-140, -32)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_bq38m")
 centered = false
 
@@ -666,15 +700,27 @@ texture = ExtResource("19_jxkmq")
 
 [node name="PotatoChipsOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
+position = Vector2(80, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("23_sauey")
 
 [node name="ColeslawOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
+position = Vector2(80, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("24_n8n1w")
 
 [node name="FriesOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
+position = Vector2(80, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("25_ntnk3")
 
 [node name="MacCheeseOnSprite" type="Sprite2D" parent="OrderTray"]
 visible = false
+position = Vector2(80, 1)
+scale = Vector2(0.18, 0.18)
+texture = ExtResource("26_lcu3b")
 
 [node name="TrayArea" type="Area2D" parent="."]
 z_index = 2
@@ -693,7 +739,7 @@ position = Vector2(0.25, -0.25)
 shape = SubResource("RectangleShape2D_i53gi")
 
 [node name="DragTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.16
 one_shot = true
 
 [node name="CustomerServedTimer" type="Timer" parent="."]
@@ -791,26 +837,131 @@ texture = ExtResource("26_lqnsh")
 [node name="NachoCheeseSpoon" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+position = Vector2(0, 5)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("31_r31p8")
 
 [node name="ChiliSpoon" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("31_wmmsm")
 
 [node name="ChipsHeld" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("33_t1fgh")
 
 [node name="ColeslawSpoon" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("34_m02ud")
 
 [node name="FriesHeld" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("35_jrn2y")
 
 [node name="MacCheeseSpoon" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("36_an4qy")
+
+[node name="KetchupMustardBottle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_datfk")
+volume_db = 24.0
+
+[node name="KetchupMustardSquirt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("27_csuyg")
+volume_db = 24.0
+
+[node name="RelishSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("39_pavfm")
+volume_db = 12.0
+
+[node name="OnionsSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("40_ipbnn")
+volume_db = 22.0
+
+[node name="JalapenosSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("40_ipbnn")
+volume_db = 22.0
+
+[node name="ShreddedCheeseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("41_ht155")
+volume_db = 20.0
+
+[node name="NachoCheeseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_mwe8a")
+volume_db = 24.0
+
+[node name="ChiliSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_mwe8a")
+volume_db = 24.0
+
+[node name="ChipsSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("43_y44cp")
+volume_db = 16.0
+
+[node name="ColeslawSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("44_xwrqr")
+volume_db = 24.0
+
+[node name="FriesSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("45_erply")
+volume_db = 12.0
+
+[node name="MacCheeseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("42_mwe8a")
+volume_db = 24.0
+
+[node name="BunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("46_dh0pw")
+volume_db = 20.0
+
+[node name="HotdogSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("47_65cq4")
+volume_db = 24.0
+
+[node name="BowlPickUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("48_bx0oc")
+volume_db = 20.0
+
+[node name="BowlPlace" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("49_8e5eb")
+volume_db = 22.0
+
+[node name="NapkinPickUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("50_7ywiv")
+volume_db = -4.0
+
+[node name="NapkinPlace" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("51_gdf57")
+volume_db = 22.0
+
+[node name="IngredientSelect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_yfrx1")
+volume_db = 24.0
+
+[node name="OrderServed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("30_b50hm")
+volume_db = 20.0
+
+[node name="OrderCorrect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("54_uvmt5")
+volume_db = 24.0
+
+[node name="OrderIncorrect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("55_ajjqv")
+volume_db = 8.0
+
+[node name="TrashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("54_o51i0")
+volume_db = 24.0
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
 [connection signal="timeout" from="CustomerFlow" to="." method="_on_customer_flow_timeout"]
@@ -848,8 +999,8 @@ z_index = 2
 [connection signal="pressed" from="MacCheese/MacUnlock" to="." method="_on_mac_unlock_pressed"]
 [connection signal="pressed" from="SideBowls" to="." method="_on_side_bowls_pressed"]
 [connection signal="pressed" from="WrapPapers" to="." method="_on_wrap_papers_pressed"]
-[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_input_event"]
 [connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_gui_input_event"]
+[connection signal="input_event" from="TrayArea" to="." method="_on_tray_area_input_event"]
 [connection signal="input_event" from="GarbageArea" to="." method="_on_garbage_area_input_event"]
 [connection signal="timeout" from="DragTimer" to="." method="_on_drag_timer_timeout"]
 [connection signal="timeout" from="CustomerServedTimer" to="." method="_on_customer_served_timer_timeout"]

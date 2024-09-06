@@ -1,9 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1y4ba0ijhwlc"]
+[gd_scene load_steps=39 format=3 uid="uid://c1y4ba0ijhwlc"]
 
 [ext_resource type="Script" path="res://scripts/opening_scene.gd" id="1_c4una"]
-[ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_6jt1f"]
-[ext_resource type="Texture2D" uid="uid://tglxt0aq323x" path="res://icon.svg" id="2_eug24"]
+[ext_resource type="Texture2D" uid="uid://dr2ef6a6m228b" path="res://assets/intro/beachintro2.png" id="3_mfwul"]
+[ext_resource type="Texture2D" uid="uid://dum2v6qmvuewk" path="res://assets/intro/beachintro3.png" id="4_g1yv5"]
 [ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="4_ot2w5"]
+[ext_resource type="Texture2D" uid="uid://chpiakrwx8iwt" path="res://assets/intro/beachboardwalkcarts-6-ppl.png" id="5_d2hip"]
+[ext_resource type="Texture2D" uid="uid://dn8qahtmr23e4" path="res://assets/intro/beachboardwalkcarts-5-ppl.png" id="6_ixpt6"]
+[ext_resource type="Texture2D" uid="uid://nrtfdq73pton" path="res://assets/intro/beachboardwalkcarts-4-ppl.png" id="7_6fgk5"]
+[ext_resource type="Texture2D" uid="uid://dtfs7stu4agvw" path="res://assets/intro/beachboardwalkcarts-3-ppl.png" id="8_nasi7"]
+[ext_resource type="Texture2D" uid="uid://ceeydv2ep3n13" path="res://assets/intro/beachboardwalkcarts-2-ppl.png" id="9_a5cxv"]
+[ext_resource type="Texture2D" uid="uid://cdeiprimyw745" path="res://assets/intro/beachboardwalkcarts-1-ppl.png" id="10_8acwh"]
+[ext_resource type="Texture2D" uid="uid://cwbmig3785bo8" path="res://assets/intro/beachboardwalkblank.png" id="11_5veoa"]
+[ext_resource type="Texture2D" uid="uid://d1tnbtc8u7xsr" path="res://assets/intro/beachintro5.png" id="12_bhco2"]
+[ext_resource type="Texture2D" uid="uid://yabksp38um8" path="res://assets/intro/cityintro.png" id="12_w0d4v"]
+[ext_resource type="Texture2D" uid="uid://cajrhlsj8cff3" path="res://assets/intro/cityintro3.png" id="13_k67ms"]
+[ext_resource type="Texture2D" uid="uid://1il2jpu0l7g5" path="res://assets/intro/cityplazacarts-3-ppl.png" id="14_uwsih"]
+[ext_resource type="Texture2D" uid="uid://nlt2n3duogu6" path="res://assets/intro/cityplazacarts-2-ppl.png" id="15_hey70"]
+[ext_resource type="Texture2D" uid="uid://bkn601o7lpppu" path="res://assets/intro/cityplazacarts-1-ppl.png" id="16_kr1p5"]
+[ext_resource type="Texture2D" uid="uid://c7u4gg6n3r46g" path="res://assets/intro/cityplazablank.png" id="17_j1axp"]
+[ext_resource type="Texture2D" uid="uid://0o2btvqfwd7" path="res://assets/intro/cityintro2.png" id="18_xpsjx"]
+[ext_resource type="Texture2D" uid="uid://c8bhm8xl83w1i" path="res://assets/intro/communityparkintro.png" id="19_tfbmb"]
+[ext_resource type="Texture2D" uid="uid://d274doq3wfuro" path="res://assets/intro/communityparkintro2.png" id="20_ffyiv"]
+[ext_resource type="Texture2D" uid="uid://buvhd1j062hrs" path="res://assets/intro/parkwithcarts-3-ppl.png" id="21_j0sfk"]
+[ext_resource type="Texture2D" uid="uid://cssbut574lcl1" path="res://assets/intro/park2withcarts-4-ppl.png" id="22_d81tq"]
+[ext_resource type="Texture2D" uid="uid://r0bvi3v8b4xe" path="res://assets/intro/park2withcarts-3-ppl.png" id="24_tbw48"]
+[ext_resource type="Texture2D" uid="uid://c42ohqq2d4nr2" path="res://assets/intro/park2withcarts-2-ppl.png" id="25_pk1fm"]
+[ext_resource type="Texture2D" uid="uid://dkah0n03si02q" path="res://assets/intro/park2withcartsnoppl.png" id="26_qxxpm"]
+[ext_resource type="Texture2D" uid="uid://m0k02qfny16h" path="res://assets/intro/park2withcarts-1-ppl.png" id="27_8ftec"]
+[ext_resource type="Texture2D" uid="uid://dml12ortvdy60" path="res://assets/intro/communityparkintro4.png" id="27_x3ykc"]
+[ext_resource type="Texture2D" uid="uid://cttft24cthcml" path="res://assets/intro/communityparkintro5.png" id="28_3dhns"]
+[ext_resource type="Texture2D" uid="uid://donp4biccnwh8" path="res://assets/intro/closed.png" id="29_7jno5"]
+[ext_resource type="Texture2D" uid="uid://ifp6rdo73iiv" path="res://assets/intro/closedintro.png" id="30_38s4p"]
+[ext_resource type="Texture2D" uid="uid://dx2hsf2m4yk56" path="res://assets/intro/closedzoomintro.png" id="31_d545y"]
+[ext_resource type="Texture2D" uid="uid://c51bipr0sgfvq" path="res://assets/intro/closedzoomsignintro.png" id="32_yc530"]
+[ext_resource type="Texture2D" uid="uid://eletamp43x5e" path="res://assets/intro/closedintro2.png" id="33_gv4h5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uqcn"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.733333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r86ou"]
+bg_color = Color(0.201527, 0.201527, 0.201527, 0.733333)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qrct"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 0.733333)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w001r"]
 
@@ -15,7 +54,6 @@ offset_bottom = 40.0
 script = ExtResource("1_c4una")
 
 [node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("2_6jt1f")
 centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -26,30 +64,235 @@ offset_bottom = 647.0
 [node name="slide_1" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_eug24")
+texture = ExtResource("3_mfwul")
+expand_mode = 1
 stretch_mode = 3
 
 [node name="slide_2" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_eug24")
+texture = ExtResource("4_g1yv5")
+expand_mode = 1
 stretch_mode = 3
-flip_v = true
 
 [node name="slide_3" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("2_eug24")
+texture = ExtResource("5_d2hip")
+expand_mode = 1
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="slide_4" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_ixpt6")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_5" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("7_6fgk5")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_6" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("8_nasi7")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_7" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_a5cxv")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_8" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("10_8acwh")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_9" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("11_5veoa")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_10" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_bhco2")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_11" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("12_w0d4v")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_12" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("13_k67ms")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_13" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("14_uwsih")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_14" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("15_hey70")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_15" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("16_kr1p5")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_16" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("17_j1axp")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_17" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("18_xpsjx")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_18" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("19_tfbmb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_19" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("20_ffyiv")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_20" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("21_j0sfk")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_21" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("22_d81tq")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_22" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("24_tbw48")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_23" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("25_pk1fm")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_24" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("27_8ftec")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_25" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("26_qxxpm")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_26" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("27_x3ykc")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_27" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("28_3dhns")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_28" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("29_7jno5")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_29" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("30_38s4p")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_30" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("31_d545y")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_31" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("32_yc530")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="slide_32" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("33_gv4h5")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_ot2w5")
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_4uqcn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r86ou")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0qrct")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_w001r")
 text = "Next"
 icon_alignment = 1

@@ -1,5 +1,9 @@
 extends Node
 
+var main_theme = AudioStreamPlayer.new()
+var location_background_audio = AudioStreamPlayer.new()
+var unlock_sound = AudioStreamPlayer.new()
+
 var money = 0.00
 var reputation = 0
 
@@ -30,6 +34,7 @@ var tutorial11 = false
 var tutorial12 = false
 var tutorial13 = false
 var tutorial14 = false
+var tutorial_part_complete = false
 var tutorial_complete = false
 var first_side_unlocked = false
 
@@ -45,7 +50,7 @@ var tray_contents = {
 }
 
 var sausages = {
-	"Regular Hot Dog": {"price": 4, "restock": 0.80, "unlocked": true, "reputation_value": 3},
+	"Hotdog": {"price": 4, "restock": 0.80, "unlocked": true, "reputation_value": 3},
 	"Veggie Dog": {"price": 5, "restock": 1.00, "unlocked": false, "unlock_cost": 200, "reputation_value": 4},
 	"Bratwurst": {"price": 5.50, "restock": 1.10, "unlocked": false, "unlock_cost": 300, "reputation_value": 5}
 }
@@ -74,13 +79,13 @@ var sides = {
 	"Mac and Cheese": {"price": 4, "restock": 0.80, "unlocked": false, "unlock_cost": 500, "reputation_value": 4}
 }
 
-var park_patience = 18.0
-var campus_patience = 18.0
-var market_patience = 16.0
-var boardwalk_patience = 16.0
-var plaza_patience = 14.0
-var carnival_patience = 14.0
-var arena_patience = 12.0
+var park_patience = 20.0
+var campus_patience = 20.0
+var market_patience = 18.0
+var boardwalk_patience = 18.0
+var plaza_patience = 16.0
+var carnival_patience = 16.0
+var arena_patience = 15.0
 
 var unlocked_campus = false
 var unlocked_market = false
@@ -88,6 +93,55 @@ var unlocked_boardwalk = false
 var unlocked_plaza = false
 var unlocked_carnival = false
 var unlocked_arena = false
+
+func _ready():
+	add_child(main_theme)
+	add_child(location_background_audio)
+	add_child(unlock_sound)
+	
+func play_main_theme():
+	if not main_theme.is_playing():
+		main_theme.stream = preload("res://assets/audio/mainthememusic.mp3")
+		main_theme.volume_db = -4
+		main_theme.play()
+
+func stop_main_theme():
+	if main_theme.is_playing():
+		main_theme.stop()
+
+func play_background_audio():
+	if current_location == "Community Park":
+		location_background_audio.stream = preload("res://assets/audio/park-background-audio.mp3")
+		location_background_audio.volume_db = 26
+		location_background_audio.play()
+	if current_location == "College Campus":
+		location_background_audio.stream = preload("res://assets/audio/campusbackgroundaudio.mp3")
+		location_background_audio.play()
+		location_background_audio.volume_db = 18
+	if current_location == "Farmers Market":
+		location_background_audio.stream = preload("res://assets/audio/marketbackgroundaudio.mp3")
+		location_background_audio.play()
+		location_background_audio.volume_db = 16
+	if current_location == "Beach Boardwalk":
+		location_background_audio.stream = preload("res://assets/audio/beachbackgroundaudio.mp3")
+		location_background_audio.volume_db = 8
+		location_background_audio.play()
+	if current_location == "City Plaza":
+		location_background_audio.stream = preload("res://assets/audio/citybackgroundaudio.mp3")
+		location_background_audio.volume_db = 10
+		location_background_audio.play()
+	if current_location == "Carnival":
+		location_background_audio.stream = preload("res://assets/audio/carnivalbackgroundaudio.mp3")
+		location_background_audio.volume_db = 14
+		location_background_audio.play()
+	if current_location == "Sports Arena":
+		location_background_audio.stream = preload("res://assets/audio/arenabackgroundaudio.mp3")
+		location_background_audio.volume_db = -4
+		location_background_audio.play()
+
+func stop_background_audio():
+	if location_background_audio.is_playing():
+		location_background_audio.stop()
 
 func update_money():
 	var money_display = get_node("/root/HotdogCart/UI/MoneyDisplay")
@@ -213,6 +267,9 @@ func unlock_ingredient(ingredient_type: String, ingredient_name: String) -> bool
 			update_money()
 			ingredient.unlocked = true
 			unlocked_ingredients_cost += ingredient.unlock_cost
+			unlock_sound.stream = preload("res://assets/audio/unlock_sound.mp3")
+			unlock_sound.volume_db = 8
+			unlock_sound.play()
 			if ingredient_type == "side" and not Globals.first_side_unlocked:
 				Globals.first_side_unlocked = true
 				var main_scene = get_tree().root.get_node("HotdogCart")  # Adjust this path to your main scene
@@ -302,6 +359,7 @@ func save_game():
 		"current_location": current_location,
 		"current_day": current_day,
 		"tutorial_complete": tutorial_complete,
+		"tutorial_part_complete": tutorial_part_complete,
 		"first_side_unlocked": first_side_unlocked,
 		"unlocked_ingredients": {
 			"sausages": sausages,
@@ -335,6 +393,7 @@ func load_game():
 		current_location = save_data.current_location
 		current_day = save_data.current_day
 		tutorial_complete = save_data.tutorial_complete
+		tutorial_part_complete = save_data.tutorial_part_complete
 		first_side_unlocked = save_data.first_side_unlocked
 		sausages = save_data.unlocked_ingredients.sausages
 		buns = save_data.unlocked_ingredients.buns

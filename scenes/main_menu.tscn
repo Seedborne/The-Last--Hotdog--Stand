@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://4ykwbo3tp6to"]
+[gd_scene load_steps=23 format=3 uid="uid://4ykwbo3tp6to"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_agw42"]
 [ext_resource type="Texture2D" uid="uid://c8qkrqg3fw5au" path="res://assets/backgrounds/communitypark.png" id="2_qwunh"]
 [ext_resource type="Texture2D" uid="uid://irycmlysh28n" path="res://assets/hotdogcarttest.png" id="3_m4c45"]
 [ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="4_q461v"]
 [ext_resource type="Texture2D" uid="uid://c1wc0ymcf0uu7" path="res://assets/hdrb.png" id="5_ifxxb"]
+[ext_resource type="AudioStream" uid="uid://0mntyiwb1qig" path="res://assets/audio/click_001.ogg" id="6_hppup"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ox6iw"]
 
@@ -60,7 +61,7 @@ layout_mode = 1
 offset_left = 485.0
 offset_top = 280.0
 offset_right = 659.0
-offset_bottom = 536.0
+offset_bottom = 488.0
 alignment = 1
 
 [node name="NewGame" type="Button" parent="MainMenuContainer"]
@@ -87,6 +88,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_hkdew")
 text = "Load Game"
 
 [node name="Settings" type="Button" parent="MainMenuContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("4_q461v")
@@ -108,7 +110,14 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_ejs5t")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uu3k3")
 text = "Quit"
 
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_hppup")
+volume_db = 12.0
+
+[connection signal="mouse_entered" from="MainMenuContainer/NewGame" to="." method="_on_new_game_mouse_entered"]
 [connection signal="pressed" from="MainMenuContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="MainMenuContainer/LoadGame" to="." method="_on_load_game_mouse_entered"]
 [connection signal="pressed" from="MainMenuContainer/LoadGame" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MainMenuContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="MainMenuContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="MainMenuContainer/Quit" to="." method="_on_quit_pressed"]

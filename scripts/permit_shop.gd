@@ -48,6 +48,7 @@ func _on_button_campus_pressed():
 		Globals.unlocked_campus = true
 		$PermitPanel/VBoxContainerCampus.visible = false
 		$PermitPanel/PanelCampus.visible = false
+		$PermitPurchaseSound.play()
 
 func _on_button_market_pressed():
 	if Globals.money >= market_cost:
@@ -56,6 +57,7 @@ func _on_button_market_pressed():
 		Globals.unlocked_market = true
 		$PermitPanel/VBoxContainerMarket.visible = false
 		$PermitPanel/PanelMarket.visible = false
+		$PermitPurchaseSound.play()
 
 func _on_button_boardwalk_pressed():
 	if Globals.money >= boardwalk_cost:
@@ -64,6 +66,7 @@ func _on_button_boardwalk_pressed():
 		Globals.unlocked_boardwalk = true
 		$PermitPanel/VBoxContainerBoardwalk.visible = false
 		$PermitPanel/PanelBoardwalk.visible = false
+		$PermitPurchaseSound.play()
 
 func _on_button_plaza_pressed():
 	if Globals.money >= plaza_cost:
@@ -72,6 +75,7 @@ func _on_button_plaza_pressed():
 		Globals.unlocked_plaza = true
 		$PermitPanel/VBoxContainerPlaza.visible = false
 		$PermitPanel/PanelPlaza.visible = false
+		$PermitPurchaseSound.play()
 
 func _on_button_carnival_pressed():
 	if Globals.money >= carnival_cost:
@@ -80,6 +84,7 @@ func _on_button_carnival_pressed():
 		Globals.unlocked_carnival = true
 		$PermitPanel/VBoxContainerCarnival.visible = false
 		$PermitPanel/PanelCarnival.visible = false
+		$PermitPurchaseSound.play()
 
 func _on_button_arena_pressed():
 	if Globals.money >= arena_cost:
@@ -88,6 +93,7 @@ func _on_button_arena_pressed():
 		Globals.unlocked_arena = true
 		$PermitPanel/VBoxContainerArena.visible = false
 		$PermitPanel/PanelArena.visible = false
+		$PermitPurchaseSound.play()
 	
 func _on_back_button_pressed():
 	if not Globals.tutorial14 and not Globals.tutorial_complete:

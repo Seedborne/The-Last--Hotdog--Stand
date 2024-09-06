@@ -6,10 +6,28 @@ signal customer_left(customer)
 var order_ticket = preload("res://scenes/order_ticket.tscn")
 
 var customer_textures = [
-	preload("res://assets/customers/blueguy.png"),
 	preload("res://assets/customers/redguy.png"),
-	preload("res://assets/customers/purpleguy.png")
+	preload("res://assets/customers/orangeguy.png"),
+	preload("res://assets/customers/yellowguy.png"),
+	preload("res://assets/customers/greenguy.png"),
+	preload("res://assets/customers/tealguy.png"),
+	preload("res://assets/customers/blueguy.png"),
+	preload("res://assets/customers/violetguy.png"),
+	preload("res://assets/customers/purpleguy.png"),
+	preload("res://assets/customers/pinkguy.png"),
+	preload("res://assets/customers/plumguy.png")
 ]
+
+var customer_voices = [
+	preload("res://assets/audio/gibberish1.mp3"),
+	preload("res://assets/audio/gibberish2.mp3"),
+	preload("res://assets/audio/gibberish3.mp3"),
+	preload("res://assets/audio/gibberish4.mp3"),
+	preload("res://assets/audio/gibberish5.mp3"),
+	preload("res://assets/audio/gibberish6.mp3")
+]
+
+var customer_voice = null
 
 func _ready():
 	if Globals.current_location == "Community Park":
@@ -31,6 +49,25 @@ func _ready():
 	$CustomerSprite.set_process_input(true)
 	var random_texture = customer_textures[randi() % customer_textures.size()]
 	$CustomerSprite.texture = random_texture
+	customer_voice = customer_voices[randi() % customer_voices.size()]
+	$CustomerVoice.stream = customer_voice
+	$CustomerVoice.play()
+
+func _process(_delta):
+	var remaining_time = $CustomerPatience.time_left
+	var total_time = $CustomerPatience.wait_time
+	if remaining_time >= total_time / 2:
+		$HappyFace.visible = true
+		$NeutralFace.visible = false
+		$AngryFace.visible = false
+	elif remaining_time >= total_time / 4:
+		$HappyFace.visible = false
+		$NeutralFace.visible = true
+		$AngryFace.visible = false
+	elif $CustomerSprite.visible:
+		$HappyFace.visible = false
+		$NeutralFace.visible = false
+		$AngryFace.visible = true
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
@@ -45,6 +82,8 @@ func _on_customer_clicked():
 	set_label_color($OrderReputation, Color(1, 0, 0))
 	$OrderReputation.text = "-5 Rep"
 	$OrderReputation.show()
+	$CustomerVoice.stream = customer_voice
+	$CustomerVoice.play()
 	print("Showing order again, -5")
 	print("Current rep points: ", Globals.reputation)
 	emit_signal("order_requested")
@@ -60,6 +99,9 @@ func _on_customer_patience_timeout():
 	print("Customer left, -10")
 	print("Current rep points: ", Globals.reputation)
 	$CustomerSprite.hide()
+	$HappyFace.visible = false
+	$NeutralFace.visible = false
+	$AngryFace.visible = false
 	set_label_color($CustomerLeft, Color(1, 0, 0))
 	$CustomerLeft.show()
 	set_label_color($OrderReputation, Color(1, 0, 0))
@@ -70,8 +112,13 @@ func _on_customer_patience_timeout():
 	
 func _on_customer_served():
 	$CustomerSprite.hide()
+	$HappyFace.visible = false
+	$NeutralFace.visible = false
+	$AngryFace.visible = false
 	$CustomerServedTimer.start()
 	$CustomerPatience.stop()
+	$Area2D.monitoring = false
+	$Area2D.input_pickable = false
 	emit_signal("customer_left", self)
 	var ticket_order = {
 		"sausage": order_ticket.sausage_type,

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://28t2spvyrii1"]
+[gd_scene load_steps=8 format=3 uid="uid://28t2spvyrii1"]
 
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_rji70"]
 [ext_resource type="Texture2D" uid="uid://b8n3hjgfd087d" path="res://assets/customers/blueguy.png" id="2_gk1it"]
+[ext_resource type="Texture2D" uid="uid://cg1ajs02fv4gi" path="res://assets/customers/smileyface.png" id="3_8f20x"]
 [ext_resource type="FontFile" uid="uid://dqfmsx57swhle" path="res://assets/IndieFlower-Regular.ttf" id="3_fokgw"]
+[ext_resource type="Texture2D" uid="uid://d0qgicg1k537d" path="res://assets/customers/neutralface.png" id="4_s63ic"]
+[ext_resource type="Texture2D" uid="uid://bhtjjtsu6e7er" path="res://assets/customers/angryface.png" id="5_xhh1e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyhxa"]
 size = Vector2(90, 157)
@@ -10,10 +13,31 @@ size = Vector2(90, 157)
 [node name="Customer" type="Node2D"]
 script = ExtResource("1_rji70")
 
+[node name="CustomerVoice" type="AudioStreamPlayer2D" parent="."]
+volume_db = 12.0
+
 [node name="CustomerSprite" type="Sprite2D" parent="."]
 position = Vector2(314, 289)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_gk1it")
+
+[node name="HappyFace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(314, 289)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_8f20x")
+
+[node name="NeutralFace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(314, 289)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_s63ic")
+
+[node name="AngryFace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(314, 289)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xhh1e")
 
 [node name="CustomerPatience" type="Timer" parent="."]
 one_shot = true
